@@ -1,6 +1,7 @@
 # import packages
 import serial
 import math
+import sc3nb
 
 # initialization
 sobj = serial.Serial('COM5', 115200)
@@ -10,6 +11,7 @@ output_volume = 0
 d_volume_old = 0
 dd_volume = 0
 d_volume = 0
+volume_accumulated = 0
 
 
 def diameter_x(x):
@@ -27,7 +29,7 @@ while True:
     # read the distance from HC-SR04
     distance = sobj.readline()
     distance = float(distance.decode("utf-8"))
-    print(distance)
+    # print(distance)
 
     # fluid volume
     if distance < x_sensor:
@@ -44,6 +46,12 @@ while True:
             output_volume = max_volume
             d_volume = 0
 
+        # apply correction factor from spectrometer to only get the blood amount
+        d_volume = get_correction(d_volume)
+
+        # compute accumulated blood volume
+        volume_accumulated += d_volume
+
         # trend of volume change
         dd_volume = d_volume - d_volume_old
         d_volume_old = d_volume
@@ -52,5 +60,4 @@ while True:
     print("Accumulated: " + str(int(output_volume)))
     print("Delta: " + str(int(d_volume)))
     print("Trend: " + str(int(dd_volume)))
-
 
