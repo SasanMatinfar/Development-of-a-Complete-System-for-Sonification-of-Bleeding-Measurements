@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/read_arduino.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino_threading.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_threading.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_arduino.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+            <state relative-caret-position="501">
+              <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -76,6 +75,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="C:/anaconda3/envs/lvlbleed" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -160,8 +160,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/read_arduino.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+        <state relative-caret-position="501">
+          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>

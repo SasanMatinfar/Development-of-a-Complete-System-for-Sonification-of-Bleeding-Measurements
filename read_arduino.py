@@ -48,8 +48,9 @@ while True:
         dd_volume = d_volume - d_volume_old
         d_volume_old = d_volume
 
-    # print to console
-    print(int(output_volume))
-    print(int(dd_volume))
+    # output
+    print("Accumulated: " + str(int(output_volume)))
+    print("Delta: " + str(int(d_volume)))
+    print("Trend: " + str(int(dd_volume)))
 
 
