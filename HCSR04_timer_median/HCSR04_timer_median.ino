@@ -4,7 +4,7 @@
 
 #include <NewPing.h>
 
-#define ITERATIONS     5 // Number of iterations.
+#define ITERATIONS     15 // Number of iterations.
 #define TRIGGER_PIN   10 // Arduino pin tied to trigger pin on ping sensor.
 #define ECHO_PIN      9 // Arduino pin tied to echo pin on ping sensor.
 #define MAX_DISTANCE 200 // Maximum distance (in cm) to ping.

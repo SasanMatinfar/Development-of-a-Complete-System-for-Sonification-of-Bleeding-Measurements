@@ -46,15 +46,15 @@ while True:
             output_volume = max_volume
             d_volume = 0
 
-        # apply correction factor from spectrometer to only get the blood amount
-        d_volume = get_correction(d_volume)
+    # apply correction factor from spectrometer to only get the blood amount
+    d_volume = get_correction(d_volume)
 
-        # compute accumulated blood volume
-        volume_accumulated += d_volume
+    # compute accumulated blood volume
+    volume_accumulated += d_volume
 
-        # trend of volume change
-        dd_volume = d_volume - d_volume_old
-        d_volume_old = d_volume
+    # trend of volume change
+    dd_volume = d_volume - d_volume_old
+    d_volume_old = d_volume
 
     # output
     print("Accumulated: " + str(int(output_volume)))
