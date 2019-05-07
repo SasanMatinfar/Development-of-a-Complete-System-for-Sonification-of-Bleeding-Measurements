@@ -4,7 +4,7 @@ import math
 import sc3nb
 
 # initialization
-sobj = serial.Serial('COM5', 115200)
+sobj=serial.Serial('/dev/tty.usbserial-14310',115200)
 x_sensor = 333.16
 max_volume = 0
 output_volume = 0
