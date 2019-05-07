@@ -8,7 +8,7 @@ if platform.system() == 'Windows':
     sobj = serial.Serial('COM5', 9600)
 elif platform.system() == 'Darwin':
     # Mac serial call goes here - add your COM Port
-    sobj = serial.Serial('COM5', 9600)
+    sobj = serial.Serial('/dev/tty.usbserial-14310', 115200)
 
 # initialization
 max_grams = 0
