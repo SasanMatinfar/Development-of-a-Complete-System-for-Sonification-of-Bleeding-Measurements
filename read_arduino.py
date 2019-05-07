@@ -10,7 +10,7 @@ if platform.system() == 'Windows':
     sobj = serial.Serial('COM5', 115200)
 elif platform.system() == 'Darwin':
     # Mac serial call goes here
-    sobj = serial.Serial('/dev/tty.usbserial-14310', 115200)
+    sobj = serial.Serial('/dev/tty.usbserial-14110', 115200)
 
 # initialization
 x_sensor = 333.16
