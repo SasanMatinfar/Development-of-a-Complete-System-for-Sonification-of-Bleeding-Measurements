@@ -1,15 +1,13 @@
 # import packages
 import serial
-import math
 import platform
 import sc3nb
-
 
 # serial communication
 if platform.system() == 'Windows':
     sobj = serial.Serial('COM5', 9600)
 elif platform.system() == 'Darwin':
-    # Mac serial call goes here
+    # Mac serial call goes here - add your COM Port
     sobj = serial.Serial('COM5', 9600)
 
 # initialization
@@ -28,7 +26,7 @@ def get_correction(d_volume, correction_factor=1):
 # run data acquisition loop
 while True:
 
-    # read the distance from HC-SR04
+    # read the weight from Hx711
     grams = sobj.readline()
     grams = float(grams.decode("utf-8"))
     # print(grams)
