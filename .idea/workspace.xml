@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_scale.py" afterDir="false" />
-    </list>
+    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +29,7 @@
       <file leaf-file-name="read_arduino_scale.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
+            <state relative-caret-position="191">
               <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
@@ -42,12 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_bleedinglevel_1557227199.947444.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557227199.947444.csv">
+      <file leaf-file-name="log_bleedinglevel_1557234425.978941.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
+            <state relative-caret-position="-8026" />
           </provider>
         </entry>
       </file>
@@ -208,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557219242718</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="change os independent parameters for mac">
+      <created>1557230803144</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1557230803145</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -224,11 +225,11 @@
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18675123" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18675123" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31704095" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31704095" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.41860464" weight="0.32893" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49964765" weight="0.32893" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
@@ -317,9 +318,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8026" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
+        <state relative-caret-position="191">
           <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
