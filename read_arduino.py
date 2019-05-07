@@ -1,10 +1,18 @@
 # import packages
 import serial
 import math
+import platform
 import sc3nb
 
+
+# serial communication
+if platform.system() == 'Windows':
+    sobj = serial.Serial('COM5', 115200)
+elif platform.system() == 'Darwin':
+    # Mac serial call goes here
+    sobj = serial.Serial('COM5', 115200)
+
 # initialization
-sobj=serial.Serial('/dev/tty.usbserial-14310',115200)
 x_sensor = 333.16
 max_volume = 0
 output_volume = 0
