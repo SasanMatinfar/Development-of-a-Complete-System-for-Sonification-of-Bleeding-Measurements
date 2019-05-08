@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac" />
+    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_scale.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +16,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="read_arduino.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/read_arduino.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
+            <state relative-caret-position="510">
               <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
@@ -26,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="read_arduino_scale.py" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="476">
+              <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -38,10 +40,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_bleedinglevel_1557234425.978941.csv" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8026" />
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="663">
+              <caret line="84" column="76" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="76" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -74,17 +81,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="arduinoserial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arduinoserial" type="462c0819:PsiDirectoryNode" />
+              <item name="bleedinglevel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bleedinglevel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="arduinoserial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arduinoserial" type="462c0819:PsiDirectoryNode" />
+              <item name="bleedinglevel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bleedinglevel" type="462c0819:PsiDirectoryNode" />
               <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arduinoserial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -136,6 +139,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="read_arduino_scale (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="arduinoserial" />
@@ -154,6 +160,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="read_arduino_scale" type="PythonConfigurationType" factoryName="Python">
       <module name="arduinoserial" />
@@ -172,6 +181,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.read_arduino" />
@@ -222,71 +234,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18675123" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31704095" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.41860464" weight="0.32893" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49964765" weight="0.32893" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18651211" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.30725864" weight="0.32893" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3712021" />
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.20471597" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3712021" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.41860464" weight="0.32893" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.30725864" weight="0.32893" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49964765" weight="0.32893" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change os independent parameters for mac" />
     <option name="LAST_COMMIT_MESSAGE" value="change os independent parameters for mac" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/read_arduino.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino_threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/anaconda3/envs/lvlbleed/Lib/site-packages/serial/serialwin32.py" />
     <entry file="file://$PROJECT_DIR$/read_arduino_threading.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -298,9 +272,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557227032.301779.csv" />
+    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557227199.947444.csv" />
     <entry file="file://$PROJECT_DIR$/read_arduino.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
+        <state relative-caret-position="510">
           <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
@@ -308,25 +284,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557227032.301779.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557227199.947444.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="14790">
+          <caret line="870" column="92" lean-forward="true" selection-start-line="870" selection-start-column="92" selection-end-line="870" selection-end-column="92" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8026" />
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="663">
+          <caret line="84" column="76" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="76" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="476">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>
