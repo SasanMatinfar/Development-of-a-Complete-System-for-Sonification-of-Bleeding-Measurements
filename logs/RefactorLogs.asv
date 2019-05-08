@@ -1,0 +1,4 @@
+delta = 0;
+for i = 1:length(BloodAccumulated)-1
+   delta(i+1) = BloodAccumulated(
+end

@@ -23,6 +23,7 @@ volume_accumulated = 0
 water_accumulated = 0
 time_now = 0
 time_old = 0
+d_volume_blood_sum = 0
 
 
 # apply correction factor from spectroscope sensor
@@ -53,32 +54,38 @@ with open(path.join('/Users/sasan/Desktop/MasterThesis/arduinoserial/logs', 'log
         else:
             d_grams = 0
 
-        # apply correction factor from spectrometer to only get the blood amount
+        # apply correction factor from spectrometer to only get the blood amount and convert to volume
         d_volume_blood = get_correction(d_grams) / 1.060
         d_volume_water = get_correction(d_grams) / 0.997
+
+        # accumulate delta until we print it
+        d_volume_blood_sum += d_volume_blood
 
         # compute accumulated blood volume
         volume_accumulated += d_volume_blood
         water_accumulated += d_volume_water
 
         # trend of volume change
-        dd_volume = d_volume_blood - d_volume_old
-        d_volume_old = d_volume_blood
+        dd_volume = d_volume_blood_sum - d_volume_old
 
-        # print out after 1s is expired
+        # print with ~1 Hz
         if (time_now - time_old) >= 1:
             # write csv file
             csv_writer.writerow([str(time_now), str(grams), str(volume_accumulated), str(water_accumulated),
-                                 str(d_volume_blood), str(dd_volume)])
+                                 str(d_volume_blood_sum), str(dd_volume)])
 
             # output
             print('Grams: ' + str(int(grams)))
             print("Accumulated: " + str(int(volume_accumulated)))
             print("Water accumulated: " + str(int(water_accumulated)))
-            print("Delta: " + str(int(d_volume_blood)))
+            print("Delta: " + str(int(d_volume_blood_sum)))
             print("Trend: " + str(int(dd_volume)))
             print("\n")
 
             # reset timer
             time_old = time_now
+
+            # reset helper variables
+            d_volume_old = d_volume_blood_sum
+            d_volume_blood_sum = 0
 
