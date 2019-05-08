@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac" />
+    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="add log file bleeding level">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SC-Code/Algorithmic music/01.scd" beforeDir="false" afterPath="$PROJECT_DIR$/SC-Code/Algorithmic music/01.scd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/log_bleedinglevel_1557235428.9332101.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log_bleedinglevel_1557235428.9332101.csv" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,19 +34,12 @@
       <file leaf-file-name="read_arduino_scale.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="1020">
+              <caret line="68" column="27" lean-forward="true" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log_bleedinglevel_1557234425.978941.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8026" />
           </provider>
         </entry>
       </file>
@@ -209,7 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557230803145</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add log file bleeding level">
+      <created>1557237167712</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557237167712</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add log file bleeding level">
+      <created>1557237183098</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1557237183098</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -223,13 +235,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18675123" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5003524" side_tool="true" visible="true" weight="0.31704095" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31704095" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31704095" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.41860464" weight="0.32893" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49964765" weight="0.32893" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
@@ -249,7 +260,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change os independent parameters for mac" />
-    <option name="LAST_COMMIT_MESSAGE" value="change os independent parameters for mac" />
+    <MESSAGE value="add log file bleeding level" />
+    <MESSAGE value="add some scd files" />
+    <option name="LAST_COMMIT_MESSAGE" value="add some scd files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -319,14 +332,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557234425.978941.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8026" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/log_bleedinglevel_1557235428.9332101.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="1020">
+          <caret line="68" column="27" lean-forward="true" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>
