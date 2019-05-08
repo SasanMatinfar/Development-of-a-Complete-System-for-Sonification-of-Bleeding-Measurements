@@ -39,7 +39,7 @@ ServerQuit.removeAll;
 				\predelay, 0.1,
 				\revtime, 1.8,
 				\lpf, 4500,
-				\mix, 0.35,
+				\mix, 0.5,
 				\in, ~bus[\reverb],
 				\out, ~out,
 			],
@@ -51,9 +51,55 @@ ServerQuit.removeAll;
 ~makeEvents = {
 	e = Dictionary.new;
 
-	e.add(\event4 -> {
-		~bellTone.stop;
-		~simpleMarimba.stop;
+	e.add(\pad_sine -> {
+
+		~chords = Pbind(
+			\instrument, \bpfsine,
+			\dur, Pwhite(4.5,7.0),
+			\midinote, Pxrand([
+				[23,35,54,63,64],
+				[45,52,54,59,61,64],
+				[28,40,47,56,59,63],
+				[42,52,57,61,63]
+			], inf),
+			\detune, Pexprand(0.05,0.2),
+			\cfmin, 100,
+			\cfmax, 1500,
+			\rqmin, Pexprand(0.01,0.15),
+			\atk, Pwhite(2.0,2.5),
+			\rel, Pwhite(6.5,10.0),
+			\ldb, 6,
+			\amp, 0.2,
+			\group, ~mainGroup,
+			\out, ~bus[\reverb],
+		).play;
+	});
+
+	e.add(\pad_saw -> {
+
+		~chords = Pbind(
+			\instrument, \bpfsaw,
+			\dur, Pwhite(4.5,7.0),
+			\midinote, Pxrand([
+				[23,35,54,63,64],
+				[45,52,54,59,61,64],
+				[28,40,47,56,59,63],
+				[42,52,57,61,63]
+			], inf),
+			\detune, Pexprand(0.05,0.2),
+			\cfmin, 100,
+			\cfmax, 1500,
+			\rqmin, Pexprand(0.01,0.15),
+			\atk, Pwhite(2.0,2.5),
+			\rel, Pwhite(6.5,10.0),
+			\ldb, 6,
+			\amp, 0.2,
+			\group, ~mainGroup,
+			\out, ~bus[\reverb],
+		).play;
+	});
+
+	e.add(\pad_saw_lf -> {
 
 		~chords = Pbind(
 			\instrument, \bpfsaw,
@@ -94,12 +140,52 @@ ServerQuit.removeAll;
 		).play;
 	});
 
-	e.add(\event5 -> {
+	e.add(\pad_sine_lf -> {
+
+		~chords = Pbind(
+			\instrument, \bpfsine,
+			\dur, Pwhite(4.5,7.0),
+			\midinote, Pxrand([
+				[23,35,54,63,64],
+				[45,52,54,59,61,64],
+				[28,40,47,56,59,63],
+				[42,52,57,61,63]
+			], inf),
+			\detune, Pexprand(0.05,0.2),
+			\cfmin, 100,
+			\cfmax, 1500,
+			\rqmin, Pexprand(0.01,0.15),
+			\atk, Pwhite(2.0,2.5),
+			\rel, Pwhite(6.5,10.0),
+			\ldb, 6,
+			\amp, 0.2,
+			\group, ~mainGroup,
+			\out, ~bus[\reverb],
+		).play;
+
+		~marimba = Pbind(
+			\instrument, \bpfsaw,
+			\dur, Prand([1,0.5],inf),
+			\freq, Prand([1/2,2/3,1,4/3,2,5/2,3,4,6,8],inf),
+			\detune, Pwhite(0,0.1),
+			\rqmin, 0.005,
+			\rqmax, 0.008,
+			\cfmin, Prand((Scale.major.degrees+64).midicps,inf) * Prand([0.5,1,2,4],inf),
+			\cfmax, Pkey(\cfmin) * Pwhite(1.008,1.025),
+			\atk, 3,
+			\sus, 1,
+			\rel, 5,
+			\amp, 1,
+			\group, ~mainGroup,
+			\out, ~bus[\reverb],
+		).play;
+	});
+	e.add(\event_stop -> {
 		~marimba.stop;
 		~chords.stop;
 	});
 
-	e.add(\oneshot1 -> {
+	e.add(\oneshot -> {
 		12.do{
 			Synth(
 				\bpfsaw,
@@ -155,6 +241,27 @@ s.waitForBoot({
 		Out.ar(out, sig);
 	}).add;
 
+	SynthDef(\bpfsine, {
+		arg atk=2, sus=0, rel=3, c1=1, c2=(-1),
+		freq=500, detune=0.2, pan=0, cfhzmin=0.1, cfhzmax=0.3,
+		cfmin=500, cfmax=2000, rqmin=0.1, rqmax=0.2,
+		lsf=200, ldb=0, amp=1, out=0;
+		var sig, env;
+		env = EnvGen.kr(Env([0,1,1,0],[atk,sus,rel],[c1,0,c2]),doneAction:2);
+		sig = SinOsc.ar(freq * {LFNoise1.kr(0.5,detune).midiratio}!2);
+		sig = BPF.ar(
+			sig,
+			{LFNoise1.kr(
+				LFNoise1.kr(4).exprange(cfhzmin,cfhzmax)
+			).exprange(cfmin,cfmax)}!2,
+			{LFNoise1.kr(0.1).exprange(rqmin,rqmax)}!2
+		);
+		sig = BLowShelf.ar(sig, lsf, 0.5, ldb);
+		sig = Balance2.ar(sig[0], sig[1], pan);
+		sig = sig * env * amp;
+		Out.ar(out, sig);
+	}).add;
+
 	SynthDef(\reverb, {
 		arg in, predelay=0.1, revtime=1.8,
 		lpf=4500, mix=0.15, amp=1, out=0;
@@ -182,9 +289,24 @@ s.waitForBoot({
 	s.sync;
 
 	"Now You Can Run!".postln;
+
+Window.closeAll;
+w = Window("Control Pattern", Rect(750, 50, 570, 400)).front.alwaysOnTop_(true);
+~sliderDelta = Slider(w, Rect(30, 30, 250, 40)).background_(Color(0.2, 0.75, 0.95)).action_({
+	arg obj;
+	var blood;
+	blood = obj.value;
+	~deltaBlood = blood;
+});
+StaticText(w, Rect(300, 35, 300, 30))
+.string_("Frequency 50:50.5 -- 75:125.5 Hz");
 });
 )
 
-e[\event4].value;"event4".postln;
-e[\event5].value;"event5".postln;
-e[\oneshot1].value;"oneshot1".postln;
+
+e[\event_stop].value;"\event_stop".postln;
+e[\pad_sine].value;"\pad_sine".postln;
+e[\pad_saw].value;"\pad_saw".postln;
+e[\pad_sine_lf].value;"\pad_sine_lf".postln;
+e[\pad_saw_lf].value;"\pad_saw_lf".postln;
+e[\oneshot].value;"\oneshot".postln;
