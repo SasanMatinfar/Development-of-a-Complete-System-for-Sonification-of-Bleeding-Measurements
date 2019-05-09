@@ -14,7 +14,7 @@ ServerQuit.removeAll;
 
 //Second: Global Variables Initialization
 ~out = 0;
-
+~delta = 0;
 //Third: Piece Related Functions Definition
 ~makeBusses = {
 	~bus = Dictionary.new;
@@ -36,7 +36,7 @@ ServerQuit.removeAll;
 			\reverb,
 			[
 				\amp, 1,
-				\predelay, 0.1,
+				\predelay, 1,
 				\revtime, 1.8,
 				\lpf, 4500,
 				\mix, 0.5,
@@ -50,95 +50,6 @@ ServerQuit.removeAll;
 
 ~makeEvents = {
 	e = Dictionary.new;
-
-	e.add(\pad_sine -> {
-
-		~chords = Pbind(
-			\instrument, \bpfsine,
-			\dur, Pwhite(4.5,7.0),
-			\midinote, Pxrand([
-				[23,35,54,63,64],
-				[45,52,54,59,61,64],
-				[28,40,47,56,59,63],
-				[42,52,57,61,63]
-			], inf),
-			\detune, Pexprand(0.05,0.2),
-			\cfmin, 100,
-			\cfmax, 1500,
-			\rqmin, Pexprand(0.01,0.15),
-			\atk, Pwhite(2.0,2.5),
-			\rel, Pwhite(6.5,10.0),
-			\ldb, 6,
-			\amp, 0.2,
-			\group, ~mainGroup,
-			\out, ~bus[\reverb],
-		).play;
-	});
-
-	e.add(\pad_saw -> {
-
-		~chords = Pbind(
-			\instrument, \bpfsaw,
-			\dur, Pwhite(4.5,7.0),
-			\midinote, Pxrand([
-				[23,35,54,63,64],
-				[45,52,54,59,61,64],
-				[28,40,47,56,59,63],
-				[42,52,57,61,63]
-			], inf),
-			\detune, Pexprand(0.05,0.2),
-			\cfmin, 100,
-			\cfmax, 1500,
-			\rqmin, Pexprand(0.01,0.15),
-			\atk, Pwhite(2.0,2.5),
-			\rel, Pwhite(6.5,10.0),
-			\ldb, 6,
-			\amp, 0.2,
-			\group, ~mainGroup,
-			\out, ~bus[\reverb],
-		).play;
-	});
-
-	e.add(\pad_saw_lf -> {
-
-		~chords = Pbind(
-			\instrument, \bpfsaw,
-			\dur, Pwhite(4.5,7.0),
-			\midinote, Pxrand([
-				[23,35,54,63,64],
-				[45,52,54,59,61,64],
-				[28,40,47,56,59,63],
-				[42,52,57,61,63]
-			], inf),
-			\detune, Pexprand(0.05,0.2),
-			\cfmin, 100,
-			\cfmax, 1500,
-			\rqmin, Pexprand(0.01,0.15),
-			\atk, Pwhite(2.0,2.5),
-			\rel, Pwhite(6.5,10.0),
-			\ldb, 6,
-			\amp, 0.2,
-			\group, ~mainGroup,
-			\out, ~bus[\reverb],
-		).play;
-
-		~marimba = Pbind(
-			\instrument, \bpfsaw,
-			\dur, Prand([1,0.5],inf),
-			\freq, Prand([1/2,2/3,1,4/3,2,5/2,3,4,6,8],inf),
-			\detune, Pwhite(0,0.1),
-			\rqmin, 0.005,
-			\rqmax, 0.008,
-			\cfmin, Prand((Scale.major.degrees+64).midicps,inf) * Prand([0.5,1,2,4],inf),
-			\cfmax, Pkey(\cfmin) * Pwhite(1.008,1.025),
-			\atk, 3,
-			\sus, 1,
-			\rel, 5,
-			\amp, 1,
-			\group, ~mainGroup,
-			\out, ~bus[\reverb],
-		).play;
-	});
 
 	e.add(\pad_sine_lf -> {
 
@@ -167,7 +78,7 @@ ServerQuit.removeAll;
 			\instrument, \bpfsaw,
 			\dur, Prand([1,0.5],inf),
 			\freq, Prand([1/2,2/3,1,4/3,2,5/2,3,4,6,8],inf),
-			\detune, Pwhite(0,0.1),
+			\detune, 0.01,
 			\rqmin, 0.005,
 			\rqmax, 0.008,
 			\cfmin, Prand((Scale.major.degrees+64).midicps,inf) * Prand([0.5,1,2,4],inf),
@@ -181,10 +92,9 @@ ServerQuit.removeAll;
 		).play;
 	});
 	e.add(\event_stop -> {
-		~marimba.stop;
 		~chords.stop;
+		~marimba.stop;
 	});
-
 	e.add(\oneshot -> {
 		12.do{
 			Synth(
@@ -206,8 +116,8 @@ ServerQuit.removeAll;
 				],
 				~mainGroup
 			);
-		};
-	});
+		}
+	})
 };
 
 //Fourth: ServerBoot/Quit Function Reservation
@@ -290,23 +200,34 @@ s.waitForBoot({
 
 	"Now You Can Run!".postln;
 
-Window.closeAll;
-w = Window("Control Pattern", Rect(750, 50, 570, 400)).front.alwaysOnTop_(true);
-~sliderDelta = Slider(w, Rect(30, 30, 250, 40)).background_(Color(0.2, 0.75, 0.95)).action_({
-	arg obj;
-	var blood;
-	blood = obj.value;
-	~deltaBlood = blood;
-});
-StaticText(w, Rect(300, 35, 300, 30))
-.string_("Frequency 50:50.5 -- 75:125.5 Hz");
+	Window.closeAll;
+	w = Window("Control Pattern", Rect(850, 400, 600, 200)).front.alwaysOnTop_(true);
+	~delta = 0;
+	~sliderDelta = Slider(w, Rect(30, 30, 250, 40)).background_(Color.rand).action_({
+		arg obj;
+		var delta;
+		delta = obj.value.linlin(0,1,0.1,1);
+		~reverbSynth.set(\predelay, delta);
+
+	});
+	StaticText(w, Rect(300, 35, 300, 30))
+	.string_("spontaneous blood values, 0-10 ml/s");
+	Button(w, Rect(50, 100, 60, 60)).states_([["Play", Color.black,
+		Color.gray]]).action_({e[\pad_sine_lf].value;"\pad_sine_lf".postln;});
+	Button(w, Rect(130, 100, 60, 60)).states_([["Stop", Color.black,
+		Color.gray]]).action_({e[\event_stop].value;
+		s.freeAll;"\stop".postln;});
 });
 )
 
 
+
+
 e[\event_stop].value;"\event_stop".postln;
-e[\pad_sine].value;"\pad_sine".postln;
 e[\pad_saw].value;"\pad_saw".postln;
-e[\pad_sine_lf].value;"\pad_sine_lf".postln;
+
 e[\pad_saw_lf].value;"\pad_saw_lf".postln;
 e[\oneshot].value;"\oneshot".postln;
+
+
+
