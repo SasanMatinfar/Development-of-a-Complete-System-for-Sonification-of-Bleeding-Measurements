@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sonification of Bleeding with Moving Average.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding with Moving Average.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,6 +34,11 @@
               <selected id="1" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log_refactored_correction_factor.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log_refactored_correction_factor.csv">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -89,6 +93,24 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="GitHub" type="JupiterNotebook" factoryName="Jupyter Notebook">
+      <module name="GitHub" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -128,7 +150,28 @@
       <option name="project" value="LOCAL" />
       <updated>1560360922287</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="applied lfilter on the features">
+      <created>1560364536989</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560364536989</updated>
+    </task>
+    <task id="LOCAL-00006" summary="clear outputs">
+      <created>1560364612588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560364612588</updated>
+    </task>
+    <task id="LOCAL-00007" summary="clear outputs">
+      <created>1560364625191</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560364625191</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -160,7 +203,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://github.com/SasanMatinfar/Sonification-of-Bleeding-Measurements&#10;&#10;# Conflicts:&#10;#&#9;algorithmic_music-01.ipynb" />
     <MESSAGE value="change path" />
-    <option name="LAST_COMMIT_MESSAGE" value="change path" />
+    <MESSAGE value="applied lfilter on the features" />
+    <MESSAGE value="clear outputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="clear outputs" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Untitled.ipynb">
@@ -179,6 +224,9 @@
           <selected id="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log_refactored_correction_factor.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding with Moving Average.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
