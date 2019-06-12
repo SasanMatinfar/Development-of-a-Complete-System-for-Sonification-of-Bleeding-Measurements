@@ -1,70 +1,54 @@
-"""
-OSC client
-"""
-
 import pandas as pd
-import numpy as np
 import argparse
-import random
-import time
-
-from pythonosc import osc_message_builder
 from pythonosc import udp_client
 
-import matplotlib.pyplot as plt
-from scipy.stats import norm
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", default="127.0.0.1", help="The ip of the OSC server")
-    parser.add_argument("--port", type=int, default=57120, help="The port the OSC server is listening on")
-    args = parser.parse_args()
-    client = udp_client.SimpleUDPClient(args.ip, args.port)
+class OscClient:
 
+    def __init__(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--ip", default="127.0.0.1", help="The ip of the OSC server")
+        parser.add_argument("--port", type=int, default=57120, help="The port the OSC server is listening on")
+        args = parser.parse_args()
+        self.client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-df = pd.read_csv('logs/log_refactored_correction_factor.csv', na_values=['no info', '.'], delimiter=',')
-df_indexed = df.reset_index(drop=False)
+        self.df = pd.read_csv('logs/log_refactored_correction_factor.csv', na_values=['no info', '.'], delimiter=',')
+        self.df_indexed = self.df.reset_index(drop=False)
 
-delta = df_indexed['Delta']
-d_delta = df_indexed['Delta of Delta']
-volume = df_indexed['Blood Accumulated']
+        self.delta = self.df_indexed['Delta']
+        self.d_delta = self.df_indexed['Delta of Delta']
+        self.volume = self.df_indexed['Blood Accumulated']
 
-delta_min = delta.min()
-delta_max = delta.max()
+        self.delta_min = self.delta.min()
+        self.delta_max = self.delta.max()
+        self.d_delta_min = self.d_delta.min()
+        self.d_delta_max = self.d_delta.max()
+        self.volume_min = self.volume.min()
+        self.volume_max = self.volume.max()
 
-d_delta_min = d_delta.min()
-d_delta_max = d_delta.max()
+        # print("min delta = " + str(self.delta_min))
+        # print("max delta = " + str(self.delta_max))
 
-volume_min = volume.min()
-volume_max = volume.max()
+        # print("min d_delta = " + str(self.d_delta_min))
+        # print("max d_delta = " + str(self.d_delta_max))
 
-print("min delta = " + str(delta_min))
-print("max delta = " + str(delta_max))
+        # print("min volume = " + str(self.volume_min))
+        # print("max volume = " + str(self.volume_max))
 
-print("min d_delta = " + str(d_delta_min))
-print("max d_delta = " + str(d_delta_max))
+        self.client.send_message("/root/init", [self.delta_min, self.delta_max, self.d_delta_min, self.d_delta_max, self.volume_min, self.volume_max])
+        self.client.send_message("/root/play", 1)
+        print("init and play sent")
 
-print("min volume = " + str(volume_min))
-print("max volume = " + str(volume_max))
+    def run(self, i):
+        try:
+            osc_msg = self.df_indexed.loc[i, :]
+            self.client.send_message("/root/msg", osc_msg)
+            print(osc_msg)
+        except (KeyboardInterrupt, SystemExit):
+            self.client.send_message("/root/play", 0)
+            print("Manual break by user or data missed!")
+            raise
 
-client.send_message("/root/init", [delta_min, delta_max, d_delta_min, d_delta_max, volume_min, volume_max])
-client.send_message("/root/play", 1)
-for i in range(df_indexed.size):
-    try:
-        osc_msg = df_indexed.loc[i, :]
-        client.send_message("/root/msg", osc_msg)
-        print(osc_msg)
-        time.sleep(1)
-    except (KeyboardInterrupt, SystemExit):
-        client.send_message("/root/play", 0)
-        print("Manual break by user!")
-        raise
-
-
-""""
-
-"plt.hist(delta, bins=20)"
-"plt.show()"
-"""
-
-
+    def stop(self):
+        self.client.send_message("/root/play", 0)
+        print("stop sent")
