@@ -118,8 +118,8 @@ ServerQuit.removeAll;
 
 		~marimba = Pbind(
 			\instrument, \bpfsaw,
-			\dur, Pwhite(Pfunc{~delta.linlin(0,1,0.5,0.05)},
-				Pfunc{~delta.linlin(0,1,1,0.1)}),
+			\dur, Pwhite(Pfunc{~delta.linlin(0,1,1,0.05)},
+				Pfunc{~delta.linlin(0,1,1.001,0.1)}),
 			\freq, Prand([1/2,2/3,1]*(~delta.explin(0,1,1,4)),inf),
 			\detune, Pfunc({~delta.linlin(0,1,0,2)}),
 			\rqmin, Pfunc{~volume.linlin(0,1,0.005,0.09)},
