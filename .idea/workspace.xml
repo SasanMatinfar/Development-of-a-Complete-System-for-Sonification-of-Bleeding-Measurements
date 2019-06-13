@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/sasan.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/stylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/visualization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SC-Code/Algorithmic music/02.scd" beforeDir="false" afterPath="$PROJECT_DIR$/SC-Code/Algorithmic music/02.scd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query_from_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/query_from_csv.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,8 +83,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -100,6 +93,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,7 +109,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,16 +300,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.10147992" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.10147992" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32893" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007622" side_tool="true" weight="0.26948482" />
       <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4992378" weight="0.31704095" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.41860464" weight="0.32893" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49964765" weight="0.32893" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.30725864" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.30725864" weight="0.32893" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3712021" />
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
