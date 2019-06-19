@@ -37,7 +37,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -45,15 +44,11 @@
               <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="GitHub" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GitHub" type="462c0819:PsiDirectoryNode" />
-              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560626530593</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add pbind, filters">
+      <created>1560969279642</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1560969279642</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -236,7 +238,8 @@
     <MESSAGE value="implement sonification with 3 filters" />
     <MESSAGE value="add Pbind for waterdrop" />
     <MESSAGE value="remove some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove some comments" />
+    <MESSAGE value="add pbind, filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pbind, filters" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
@@ -269,9 +272,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" />
-    <entry file="file://$PROJECT_DIR$/../arduinoserial/web-app.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/Sonification of Bleeding-Moving Average with lfilter-checkpoint.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
