@@ -2,6 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features-cleanup.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering-waterdrop.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/samples/birds.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/samples/crickets.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/samples/rain.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/samples/water-flow.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,6 +46,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -48,7 +58,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560969279642</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add pbind, filters">
+      <created>1560969361209</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560969361209</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
