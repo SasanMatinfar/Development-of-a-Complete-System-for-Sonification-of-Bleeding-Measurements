@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="change loop and buffer nodes" />
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="bug fix with buffer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -241,15 +244,29 @@
       <option name="project" value="LOCAL" />
       <updated>1562055927072</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="declare loop var explicitly in the SynthDef">
+      <created>1562067792377</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1562067792377</updated>
+    </task>
+    <task id="LOCAL-00023" summary="bug fix with buffer">
+      <created>1562069613232</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1562069613232</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" visible="true" weight="0.32893" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" side_tool="true" visible="true" weight="0.32893" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
@@ -282,7 +299,9 @@
     <MESSAGE value="sonification with natural soundscape" />
     <MESSAGE value="add natural soundscape with bugs of Buffer" />
     <MESSAGE value="change loop and buffer nodes" />
-    <option name="LAST_COMMIT_MESSAGE" value="change loop and buffer nodes" />
+    <MESSAGE value="declare loop var explicitly in the SynthDef" />
+    <MESSAGE value="bug fix with buffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix with buffer" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
