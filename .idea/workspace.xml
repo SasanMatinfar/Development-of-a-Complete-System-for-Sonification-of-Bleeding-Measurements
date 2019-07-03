@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="bug fix with buffer">
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/sheeps.wav" beforeDir="false" afterPath="$PROJECT_DIR$/samples/sheeps.wav" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -258,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562069613232</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="small changes, code clean up">
+      <created>1562071867632</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1562071867632</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -301,7 +309,8 @@
     <MESSAGE value="change loop and buffer nodes" />
     <MESSAGE value="declare loop var explicitly in the SynthDef" />
     <MESSAGE value="bug fix with buffer" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix with buffer" />
+    <MESSAGE value="small changes, code clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes, code clean up" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
