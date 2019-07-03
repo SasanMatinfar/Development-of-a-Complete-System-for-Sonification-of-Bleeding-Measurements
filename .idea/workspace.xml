@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="add two samples for horse and wind">
-      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume and natural soundscape-Copy1.ipynb" beforeDir="false" />
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -278,15 +278,29 @@
       <option name="project" value="LOCAL" />
       <updated>1562163547345</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="change file name to ..., 3 examples">
+      <created>1562163817638</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1562163817638</updated>
+    </task>
+    <task id="LOCAL-00028" summary="change file name to ..., 3 examples">
+      <created>1562163897228</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1562163897228</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" side_tool="true" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" visible="true" weight="0.32893" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
@@ -324,7 +338,8 @@
     <MESSAGE value="small changes, code clean up" />
     <MESSAGE value="add notebook for three nature sonifications" />
     <MESSAGE value="add two samples for horse and wind" />
-    <option name="LAST_COMMIT_MESSAGE" value="add two samples for horse and wind" />
+    <MESSAGE value="change file name to ..., 3 examples" />
+    <option name="LAST_COMMIT_MESSAGE" value="change file name to ..., 3 examples" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
