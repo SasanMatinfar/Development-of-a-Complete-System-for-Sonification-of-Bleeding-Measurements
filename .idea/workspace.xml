@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="fine tune nature_one_sonification">
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="fine tune sample thunder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -300,7 +299,28 @@
       <option name="project" value="LOCAL" />
       <updated>1562177931092</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="cleanup and shorten">
+      <created>1562193743289</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1562193743289</updated>
+    </task>
+    <task id="LOCAL-00031" summary="finalize nature_one">
+      <created>1562228760453</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1562228760453</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fine tune sample thunder">
+      <created>1562228812559</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1562228812559</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -348,7 +368,10 @@
     <MESSAGE value="add two samples for horse and wind" />
     <MESSAGE value="change file name to ..., 3 examples" />
     <MESSAGE value="fine tune nature_one_sonification" />
-    <option name="LAST_COMMIT_MESSAGE" value="fine tune nature_one_sonification" />
+    <MESSAGE value="cleanup and shorten" />
+    <MESSAGE value="finalize nature_one" />
+    <MESSAGE value="fine tune sample thunder" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine tune sample thunder" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
