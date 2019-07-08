@@ -1,0 +1,34 @@
+.banner {
+    height: 100px;
+    margin: -8px -10px 10px;
+    background-color: rgb(70, 39, 142);
+    border-radius: 2px;
+    font-family: Verdana;
+}
+
+.banner h1{
+    color: white;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.banner Img{
+    position: relative;
+    float: right;
+    right: 35px;
+    height: 80px;
+}
+
+.graph {
+    float: left;
+    width: 50%;
+    font-family: Verdana;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  background-color: rgb(120, 119, 122);
+
+}
