@@ -12,7 +12,7 @@ if platform.system() == 'Windows':
 
 elif platform.system() == 'Darwin':
     # Mac serial call goes here - add your COM Port
-    sobj = serial.Serial('/dev/tty.usbserial-14110', 115200)
+    sobj = serial.Serial('/dev/tty.usbmodem141101', 115200)
 
 
 with open(path.join('calibration/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
@@ -29,12 +29,12 @@ with open(path.join('calibration/', 'log_calibration' + str(time.time()) + '.csv
         result = [x.strip() for x in output.split(',')]
         measurements = result[1::2]
 
-        if keyboard.is_pressed('ctrl'):  # if key 'q' is pressed
-            csv_writer.writerow(measurements)
-            print("writing...")
+        #if keyboard.is_pressed('ctrl'):  # if key 'q' is pressed
+        csv_writer.writerow(measurements)
+        print("writing...")
 
-        if keyboard.is_pressed('esc'):
-            csv_writer.close()
-            break
+        #if keyboard.is_pressed('esc'):
+            # csv_writer.close()
+         #   break
 
         print(measurements)
