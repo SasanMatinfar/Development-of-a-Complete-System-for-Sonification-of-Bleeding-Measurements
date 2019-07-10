@@ -257,3 +257,6 @@ s.waitForBoot({
 });
 )
 
+s.record;
+s.stopRecording;
+
