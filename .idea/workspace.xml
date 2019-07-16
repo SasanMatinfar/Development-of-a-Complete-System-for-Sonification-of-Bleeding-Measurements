@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="fine tune sample thunder">
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering-waterdrop.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering-waterdrop.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -320,7 +322,28 @@
       <option name="project" value="LOCAL" />
       <updated>1562228812559</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="finalize fine tuning nature_two_sonification">
+      <created>1562243121672</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1562243121672</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fine tune sample thunder">
+      <created>1562243150271</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1562243150271</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!">
+      <created>1562246562202</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1562246562202</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -370,8 +393,10 @@
     <MESSAGE value="fine tune nature_one_sonification" />
     <MESSAGE value="cleanup and shorten" />
     <MESSAGE value="finalize nature_one" />
+    <MESSAGE value="finalize fine tuning nature_two_sonification" />
     <MESSAGE value="fine tune sample thunder" />
-    <option name="LAST_COMMIT_MESSAGE" value="fine tune sample thunder" />
+    <MESSAGE value="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
