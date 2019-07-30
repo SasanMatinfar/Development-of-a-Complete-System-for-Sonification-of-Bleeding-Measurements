@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac" />
+    <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="add calibration full stream phase" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +13,7 @@
     <favorites_list name="arduinoserial" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -248,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562746348085</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add calibration full stream phase">
+      <created>1563914979912</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563914979912</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -284,23 +291,23 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.20471597" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.11469534" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
-      <window_info anchor="bottom" id="Find" order="3" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49964765" weight="0.32893" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.41860464" weight="0.32893" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.20471597" />
+      <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.37084672" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.30725864" weight="0.32893" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.41860464" weight="0.32893" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49964765" weight="0.32893" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -312,7 +319,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change os independent parameters for mac" />
     <MESSAGE value="add sonification example algo music 01" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sonification example algo music 01" />
+    <MESSAGE value="add calibration full stream phase" />
+    <option name="LAST_COMMIT_MESSAGE" value="add calibration full stream phase" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/query_from_csv.py">
@@ -391,9 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -408,9 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
