@@ -4,7 +4,6 @@ import platform
 import time
 import csv
 from os import path
-import keyboard
 import nn_util
 
 checkpoint_path = "trained_network/cp.ckpt"

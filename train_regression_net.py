@@ -3,7 +3,6 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import os
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.contrib.keras import layers
 
 import matplotlib.pyplot as plt
 import pandas as pd
