@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-import nn_util
+import nn_util.nn_util as nn_util
 
 # paramters
 performance_plots = 0
