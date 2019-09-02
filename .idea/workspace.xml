@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
-      <change beforePath="$PROJECT_DIR$/.idea/arduinoserial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/arduinoserial.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino_threading.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_threading.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_ultrasound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_scale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino_spec.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_spec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_regression_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_regression_net.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +19,12 @@
     <favorites_list name="arduinoserial" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="272">
+              <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -30,19 +33,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app.py">
+        <entry file="file://$PROJECT_DIR$/train_regression_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="306">
+              <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train_regression_net.py">
+        <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+            <state relative-caret-position="102">
+              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nn_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -66,13 +90,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/read_arduino.py" />
-        <option value="$PROJECT_DIR$/read_arduino_scale.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/SC-Code/read_arduino_spec.py" />
-        <option value="$PROJECT_DIR$/read_arduino_spec.py" />
         <option value="$PROJECT_DIR$/read_arduino_threading.py" />
         <option value="$PROJECT_DIR$/tf_test.py" />
+        <option value="$PROJECT_DIR$/model_def.py" />
+        <option value="$PROJECT_DIR$/nn_util.py" />
         <option value="$PROJECT_DIR$/train_regression_net.py" />
+        <option value="$PROJECT_DIR$/read_arduino_scale.py" />
+        <option value="$PROJECT_DIR$/read_arduino_spec.py" />
       </list>
     </option>
   </component>
@@ -96,11 +122,6 @@
               <item name="bleedinglevel" type="b2602c69:ProjectViewProjectNode" />
               <item name="bleedinglevel" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="bleedinglevel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bleedinglevel" type="462c0819:PsiDirectoryNode" />
-              <item name="Calibration_fullStream" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -111,8 +132,8 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/read_arduino_spec.py" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -136,27 +157,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.train_regression_net">
-    <configuration name="read_arduino" type="PythonConfigurationType" factoryName="Python">
-      <module name="arduinoserial" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/read_arduino.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="read_arduino_scale" type="PythonConfigurationType" factoryName="Python">
       <module name="arduinoserial" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,11 +185,11 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python.app" />
+      <option name="SDK_HOME" value="C:\anaconda3\envs\lvlbleed\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="false" />
-      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/read_arduino_spec.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -199,7 +199,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch1" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="read_arduino_ultrasound" type="PythonConfigurationType" factoryName="Python">
       <module name="arduinoserial" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -207,11 +207,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/read_arduino_ultrasound.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -284,11 +284,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.read_arduino" />
-      <item itemvalue="Python.read_arduino_scale" />
+      <item itemvalue="Python.read_arduino_ultrasound" />
       <item itemvalue="Python.read_arduino_spec" />
+      <item itemvalue="Python.read_arduino_scale" />
       <item itemvalue="Python.train_regression_net" />
-      <item itemvalue="Python.scratch1" />
       <item itemvalue="Python.visualization" />
       <item itemvalue="Python.web-app" />
     </list>
@@ -341,21 +340,21 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18440464" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980315" visible="true" weight="0.18440464" />
       <window_info id="Structure" order="1" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.39228296" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.26902464" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.3290461" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.37084672" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49947312" visible="true" weight="0.37084672" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32893" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.41860464" weight="0.32893" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.30725864" weight="0.32893" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003524" side_tool="true" weight="0.4980185" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49964765" weight="0.32893" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50052685" side_tool="true" weight="0.37084672" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49964765" weight="0.3279743" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -407,13 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562596323.8397305.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562596636.3052142.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562596555.7632053.csv" />
@@ -425,13 +417,6 @@
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562596957.3960693.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562597178.4267402.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562597197.689459.csv" />
-    <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562597281.3300483.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562597322.4075832.csv" />
     <entry file="file://$PROJECT_DIR$/calibration/log_calibration1562597345.5794775.csv" />
@@ -444,16 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="23" selection-start-line="10" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -541,19 +516,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualization.py">
+    <entry file="file://C:/anaconda3/envs/lvlbleed/Lib/site-packages/pandas/core/groupby/groupby.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="200">
+          <caret line="2399" column="8" selection-start-line="2399" selection-start-column="8" selection-end-line="2399" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-app.py">
+    <entry file="file://C:/.PyCharmCE/system/python_stubs/-1104561875/pandas/_libs/parsers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="234">
+          <caret line="707" column="34" lean-forward="true" selection-start-line="707" selection-start-column="34" selection-end-line="707" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -564,20 +547,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/anaconda3/envs/lvlbleed/Lib/site-packages/pandas/core/groupby/groupby.py">
+    <entry file="file://$PROJECT_DIR$/read_arduino_ultrasound.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="2399" column="8" selection-start-line="2399" selection-start-column="8" selection-end-line="2399" selection-end-column="8" />
+        <state relative-caret-position="243">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn_util/train_stats.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train_regression_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        <state relative-caret-position="306">
+          <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#82#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
         </state>
       </provider>
     </entry>

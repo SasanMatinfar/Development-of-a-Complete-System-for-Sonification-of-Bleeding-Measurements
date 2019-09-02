@@ -5,6 +5,13 @@ import time
 import csv
 from os import path
 import keyboard
+import nn_util
+
+checkpoint_path = "trained_network/cp.ckpt"
+
+# load the pre-trained model
+model = nn_util.build_model()
+model.load_weights(checkpoint_path)
 
 # serial communication
 if platform.system() == 'Windows':

@@ -3,8 +3,9 @@ import serial
 import platform
 import time
 import csv
-from os import path
+import os
 import sc3nb
+
 
 # serial communication
 if platform.system() == 'Windows':
@@ -26,13 +27,15 @@ time_old = 0
 d_volume_blood_sum = 0
 
 
+
+
+
 # apply correction factor from spectroscope sensor
 def get_correction(d_volume, correction_factor=1):
     return d_volume * correction_factor
 
-
 # open csv file
-with open(path.join('/Users/sasan/Desktop/MasterThesis/arduinoserial/logs', 'log_bleedinglevel_' + str(time.time()) +
+with open(os.path.join('/Users/sasan/Desktop/MasterThesis/arduinoserial/logs', 'log_bleedinglevel_' + str(time.time()) +
                                                                             '.csv'), 'w') as csv_file:
 
     csv_writer = csv.writer(csv_file, delimiter=',')
