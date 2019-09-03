@@ -9,10 +9,11 @@ units = 64
 # load the training statistics from the last training from log file
 train_stats = pd.read_csv('nn_util/train_stats.csv')
 
+
 # model definition
 def build_model(num_keys):
     keras_model = keras.Sequential([
-        layers.Dense(units, activation=tf.nn.relu, input_shape=[]),
+        layers.Dense(units, activation=tf.nn.relu, input_shape=[num_keys]),
         layers.Dense(units, activation=tf.nn.relu),
         layers.Dense(units, activation=tf.nn.relu),
         layers.Dense(units, activation=tf.nn.relu),
