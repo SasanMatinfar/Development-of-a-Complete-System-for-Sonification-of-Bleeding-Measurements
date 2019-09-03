@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_scale.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_arduino_spec.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_spec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_regression_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_regression_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arduino/SerialScale/SerialScale.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Arduino/SerialScale/SerialScale.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_sensors.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_sensors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+            <state relative-caret-position="684">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -90,14 +88,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calibration_fullStream/all_data.csv">
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="535">
-              <caret line="196" column="126" lean-forward="true" selection-start-line="196" selection-start-column="126" selection-end-line="196" selection-end-column="126" />
+              <caret line="196" column="126" selection-start-line="196" selection-start-column="126" selection-end-line="196" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -382,7 +380,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.31832796" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.4158628" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.25294748" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49947312" weight="0.37834942" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -672,23 +670,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_sensors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-          <folding>
-            <element signature="e#18#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Calibration_fullStream/all_data.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="535">
-          <caret line="196" column="126" lean-forward="true" selection-start-line="196" selection-start-column="126" selection-end-line="196" selection-end-column="126" />
+          <caret line="196" column="126" selection-start-line="196" selection-start-column="126" selection-end-line="196" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_sensors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#18#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

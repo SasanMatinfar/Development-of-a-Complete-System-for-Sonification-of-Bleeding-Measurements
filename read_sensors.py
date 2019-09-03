@@ -67,10 +67,8 @@ def get_correction(d_volume):
     measurements_normalized = nn_util.norm(measurements_np)
 
     measure_df = pd.DataFrame(measurements_normalized).transpose()
-    print(measurements_np)
 
     prediction = model.predict(measure_df).flatten()
-    print(prediction)
 
     # apply the pre-trained network to get the correction factor
     correction_factor = prediction / 100
@@ -80,9 +78,9 @@ def get_correction(d_volume):
     elif correction_factor < 0:
         correction_factor = 0
 
-    print('Estimated correction factor: ' + str(correction_factor))
+    # print('Estimated correction factor: ' + str(correction_factor))
 
-    return d_volume * correction_factor
+    return d_volume * correction_factor, prediction, measurements_np
 
 
 # run data acquisition loop
@@ -92,7 +90,9 @@ while True:
     time.sleep(0.05)
 
     # read the weight from Hx711
+    # sobj_scale.flush()
     grams = sobj_scale.readline()
+
     grams = float(grams.decode("utf-8"))
     # print(grams)
 
@@ -103,7 +103,8 @@ while True:
         d_grams = 0
 
     # apply correction factor from spectrometer to only get the blood amount and convert to volume
-    d_volume_blood = get_correction(d_grams) / 1.060
+    d_volume_blood, pred, measure_np = get_correction(d_grams)
+    d_volume_blood /= 1.060
     # d_volume_water = get_correction(d_grams) / 0.997
 
     # accumulate delta until we print it
@@ -120,12 +121,15 @@ while True:
     if (time_now - time_old) >= 1:
 
         # output
+        print('----------------------------------------------------')
+        print('Spectrogram output: ' + str(measure_np))
+        print('Predicted blood percentage: ' + str(pred))
+        print('----------------------------------------------------')
         print('Grams: ' + str(int(grams)))
         print("Accumulated: " + str(int(volume_accumulated)))
         # print("Water accumulated: " + str(int(water_accumulated)))
         print("Delta: " + str(int(d_volume_blood_sum)))
         print("Trend: " + str(int(dd_volume)))
-        print("\n")
 
         # reset timer
         time_old = time_now

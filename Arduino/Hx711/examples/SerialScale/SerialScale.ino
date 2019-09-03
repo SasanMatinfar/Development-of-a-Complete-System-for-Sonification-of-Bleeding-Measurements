@@ -15,6 +15,8 @@
 // Hx711.DOUT - pin #A1
 // Hx711.SCK - pin #A0
 
+#include <Hx711.h>
+
 Hx711 scale(A1, A0);
 
 void setup() {
@@ -27,6 +29,11 @@ void setup() {
 }
 
 void loop() {
+
+	// Serial.println(scale.averageValue());
   Serial.println(scale.getGram(), 1);
-  delay(2000);
+  
+  // Serial.println(" g");
+
+  delay(200);
 }
