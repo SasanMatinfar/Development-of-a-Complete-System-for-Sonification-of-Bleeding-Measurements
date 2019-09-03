@@ -10,11 +10,15 @@ import seaborn as sns
 
 import nn_util.nn_util as nn_util
 
-# paramters
-performance_plots = 0
-test_loading = 0
+# parameters
 EPOCHS = 1000
 checkpoint_path = "trained_network/cp.ckpt"
+
+# script options
+performance_plots = 0
+dataset_plots = 0
+test_loading = 0
+
 
 # normalize data
 def norm(x):
@@ -34,9 +38,9 @@ checkpoint_dir = os.path.dirname(checkpoint_path)
 cp_callback = tf.keras.callbacks.ModelCheckpoint(checkpoint_path, save_weights_only=True, verbose=1)
 
 
-def plot_history(history):
-    hist = pd.DataFrame(history.history)
-    hist['epoch'] = history.epoch
+def plot_history(history_):
+    hist = pd.DataFrame(history_.history)
+    hist['epoch'] = history_.epoch
 
     plt.figure()
     plt.xlabel('Epoch')
@@ -45,7 +49,6 @@ def plot_history(history):
              label='Train Error')
     plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
              label = 'Val Error')
-    # plt.ylim([0,5])
     plt.legend()
 
     plt.figure()
@@ -55,7 +58,6 @@ def plot_history(history):
              label='Train Error')
     plt.plot(hist['epoch'], hist['val_mean_squared_error'],
              label = 'Val Error')
-    # plt.ylim([0, 20])
     plt.legend()
     plt.show()
 
@@ -96,7 +98,7 @@ test_dataset = dataset.drop(train_dataset.index)
 dataset = dataset.dropna()
 
 # inspect the data
-if performance_plots:
+if dataset_plots:
     sns.pairplot(train_dataset[["MPG", "Cylinders", "Displacement", "Weight"]], diag_kind="kde")
     plt.show()
 
@@ -129,7 +131,7 @@ print(example_result)
 early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=50)
 
 history = model.fit(normed_train_data, train_labels, epochs=EPOCHS,
-                    validation_split = 0.2, verbose=1, callbacks=[early_stop, PrintEpochs(), cp_callback])
+                    validation_split=0.2, verbose=1, callbacks=[early_stop, PrintEpochs(), cp_callback])
 
 # evaluate
 if performance_plots:

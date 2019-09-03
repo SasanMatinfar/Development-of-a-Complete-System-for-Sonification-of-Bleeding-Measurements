@@ -4,15 +4,20 @@ import platform
 import time
 import csv
 import os
-import sc3nb
+import sys
 
 
 # serial communication
-if platform.system() == 'Windows':
-    sobj = serial.Serial('COM5', 9600)
-elif platform.system() == 'Darwin':
-    # Mac serial call goes here - add your COM Port
-    sobj = serial.Serial('/dev/tty.usbserial-14110', 9600)
+try:
+    if platform.system() == 'Windows':
+        sobj = serial.Serial('COM10', 9600)
+    elif platform.system() == 'Darwin':
+        # Mac serial call goes here - add your COM Port
+        sobj = serial.Serial('/dev/tty.usbserial-14110', 9600)
+except Exception as e:
+    print(e, file=sys.stderr)
+    exit()
+
 
 # initialization
 max_grams = 0
@@ -27,15 +32,13 @@ time_old = 0
 d_volume_blood_sum = 0
 
 
-
-
-
 # apply correction factor from spectroscope sensor
 def get_correction(d_volume, correction_factor=1):
     return d_volume * correction_factor
 
+
 # open csv file
-with open(os.path.join('/Users/sasan/Desktop/MasterThesis/arduinoserial/logs', 'log_bleedinglevel_' + str(time.time()) +
+with open(os.path.join('logs/', 'log_bleedinglevel_' + str(time.time()) +
                                                                             '.csv'), 'w') as csv_file:
 
     csv_writer = csv.writer(csv_file, delimiter=',')
