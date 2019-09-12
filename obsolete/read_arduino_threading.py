@@ -44,7 +44,7 @@ def read_data(ser, buf=b'', callback=None):
         if msg_parts[-1] == b"1234": # There are many different ways to make a good checksum
             callback(msg_parts[:-1])
 
-    #  return buf
+    return buf
 
 
 # Do other stuff while the thread is running in the background
