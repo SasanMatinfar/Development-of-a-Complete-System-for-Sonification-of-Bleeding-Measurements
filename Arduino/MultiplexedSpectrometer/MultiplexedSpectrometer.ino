@@ -184,7 +184,7 @@ void getData() {
 //  {
 //   Serial.println(rawData[i]);
 //  }
-  delay(2000);
+  // delay(2000);
   AS7265X.readCalData(calData);
   for(int i = 0; i < 18; i++)
   {

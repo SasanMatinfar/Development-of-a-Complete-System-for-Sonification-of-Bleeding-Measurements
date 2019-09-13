@@ -58,6 +58,7 @@ column_names = ['channel_1', 'channel_2', 'channel_3', 'channel_4', 'channel_5',
 def get_correction(d_volume):
 
     # read and decode the signal
+    sobj_spectro.flushInput()  # flush the buffer
     output = sobj_spectro.readline()
     output = output.decode("utf-8")
     result = [x.strip() for x in output.split(',')]
@@ -95,7 +96,7 @@ while True:
         time.sleep(0.05)
 
         # read the weight from Hx711
-        # sobj_scale.flush()
+        sobj_scale.flushInput()  # flush the buffer
         grams = sobj_scale.readline()
 
         grams = float(grams.decode("utf-8"))

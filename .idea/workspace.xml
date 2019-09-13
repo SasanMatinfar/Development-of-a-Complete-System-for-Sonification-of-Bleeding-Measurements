@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be46a0bc-e282-4dde-b476-216b13bf0fe8" name="Default Changelist" comment="change os independent parameters for mac">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arduino/MultiplexedSpectrometer/MultiplexedSpectrometer.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Arduino/MultiplexedSpectrometer/MultiplexedSpectrometer.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arduino/SerialScale/SerialScale.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Arduino/SerialScale/SerialScale.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_scale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_arduino_spec.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_arduino_spec.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/read_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_sensors.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+            <state relative-caret-position="170">
+              <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -56,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="256">
+              <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -68,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/read_sensors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="1564">
+              <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -124,10 +126,10 @@
         <option value="$PROJECT_DIR$/model_def.py" />
         <option value="$PROJECT_DIR$/nn_util.py" />
         <option value="$PROJECT_DIR$/nn_util/nn_util.py" />
-        <option value="$PROJECT_DIR$/read_arduino_spec.py" />
         <option value="$PROJECT_DIR$/train_regression_net.py" />
         <option value="$PROJECT_DIR$/Calibration_fullStream/all_data.csv" />
         <option value="$PROJECT_DIR$/read_arduino_scale.py" />
+        <option value="$PROJECT_DIR$/read_arduino_spec.py" />
         <option value="$PROJECT_DIR$/read_sensors.py" />
       </list>
     </option>
@@ -383,7 +385,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.5019685" side_tool="true" weight="0.12684989" />
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.17363344" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.3494105" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.25294748" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49947312" weight="0.37834942" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -663,20 +665,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
+    <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        <state relative-caret-position="170">
+          <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_arduino_scale.py">
+    <entry file="file://$PROJECT_DIR$/read_arduino_spec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="256">
+          <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>
@@ -685,8 +687,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/read_sensors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+        <state relative-caret-position="1564">
+          <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>

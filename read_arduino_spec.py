@@ -28,6 +28,7 @@ with open(path.join('calibration/', 'log_calibration' + str(time.time()) + '.csv
 
     while True:
 
+        sobj.flushInput()
         output = sobj.readline()
         output = output.decode("utf-8")
 

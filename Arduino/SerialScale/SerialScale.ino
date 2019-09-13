@@ -28,5 +28,5 @@ void setup() {
 
 void loop() {
   Serial.println(scale.getGram(), 1);
-  delay(2000);
+ //  delay(2000);
 }
