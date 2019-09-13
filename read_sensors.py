@@ -28,7 +28,7 @@ try:
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
         sobj_spectro = serial.Serial('/dev/tty.usbmodem141101', 115200)
-        sobj_scale = serial.Serial('/dev/tty.usbserial-14110', 9600)
+        sobj_scale = serial.Serial('/dev/tty.usbserial-1430', 9600)
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
     print('Please connect both sensors', file=sys.stderr)
@@ -142,6 +142,7 @@ while True:
             d_volume_old = d_volume_blood_sum
             d_volume_blood_sum = 0
 
-    except:
+    except Exception as e:
+        print(str(e))
         print('Could not read sensor output')
         time.sleep(0.5)

@@ -13,7 +13,7 @@ try:
         sobj = serial.Serial('COM12', 9600)
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
-        sobj = serial.Serial('/dev/tty.usbserial-14110', 9600)
+        sobj = serial.Serial('/dev/tty.usbserial-1430', 9600)
 except Exception as e:
     print(e, file=sys.stderr)
     exit()
@@ -51,6 +51,7 @@ with open(os.path.join('logs/', 'log_bleedinglevel_' + str(time.time()) +
 
         # read the weight from Hx711
         sobj.flushInput()
+        sobj.flushOutput()
         grams = sobj.readline()
         grams = float(grams.decode("utf-8"))
         # print(grams)
