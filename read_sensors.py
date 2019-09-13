@@ -23,7 +23,7 @@ model.load_weights(checkpoint_path)
 try:
     if platform.system() == 'Windows':
         sobj_spectro = serial.Serial('COM6', 115200)
-        sobj_scale = serial.Serial('COM12', 9600)
+        sobj_scale = serial.Serial('COM5', 9600)
 
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port

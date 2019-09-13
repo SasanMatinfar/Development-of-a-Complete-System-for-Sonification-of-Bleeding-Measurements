@@ -102,8 +102,7 @@ turnOutputsOff();
 
 //  Serial.println("SPECTROMETER 3");
 // tcaselect(2);
-// getData();
-
+// getData();´
   
 }
 
@@ -185,7 +184,7 @@ void getData() {
 //  {
 //   Serial.println(rawData[i]);
 //  }
-
+  delay(2000);
   AS7265X.readCalData(calData);
   for(int i = 0; i < 18; i++)
   {
