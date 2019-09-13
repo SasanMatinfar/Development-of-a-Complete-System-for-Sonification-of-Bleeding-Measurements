@@ -50,6 +50,7 @@ with open(os.path.join('logs/', 'log_bleedinglevel_' + str(time.time()) +
         time_now = time.time()
 
         # read the weight from Hx711
+        sobj.flushInput()
         grams = sobj.readline()
         grams = float(grams.decode("utf-8"))
         # print(grams)
