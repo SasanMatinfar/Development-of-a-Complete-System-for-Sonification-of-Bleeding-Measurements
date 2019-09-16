@@ -6,6 +6,7 @@ import csv
 from os import path
 import sys
 import numpy as np
+import keyboard
 
 # serial communication
 try:
@@ -19,30 +20,37 @@ except Exception as e:
     print(e, file=sys.stderr)
     exit()
 
+with open(path.join('calibration2/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
 
-with open(path.join('calibration/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
-
-    # csv_writer = csv.writer(csv_file, delimiter=',', dialect='excel')
-    # csv_writer.writerow(['610 nm', '680 nm', '730 nm', '760 nm', '810 nm', '860 nm', '560 nm', '585 nm', '645 nm',
-    #                     '705 nm', '900 nm', '940 nm', '410 nm', '435 nm', '460 nm', '485 nm', '510 nm', '535 nm'])
-
+    csv_writer = csv.writer(csv_file, delimiter=',', dialect='excel')
+    csv_writer.writerow(['610 nm', '680 nm', '730 nm', '760 nm', '810 nm', '860 nm', '560 nm', '585 nm', '645 nm',
+                         '705 nm', '900 nm', '940 nm', '410 nm', '435 nm', '460 nm', '485 nm', '510 nm', '535 nm'])
     while True:
 
-        sobj.flushInput()
-        output = sobj.readline()
-        output = output.decode("utf-8")
+        try:
 
-        result = [x.strip() for x in output.split(',')]
-        measurements = result[1::2]
+            sobj.flushInput()
+            #time.sleep(0.1)
+            sobj.flushOutput()
+            output = sobj.readline()
+            output = output.decode("utf-8")
 
-        #if keyboard.is_pressed('ctrl'):  # if key 'q' is pressed
-        # csv_writer.writerow(measurements)
-        # print("writing...")
+            result = [x.strip() for x in output.split(',')]
+            measurements = result[1::2]
 
-        #if keyboard.is_pressed('esc'):
-            # csv_writer.close()
-         #   break
+            #if keyboard.is_pressed('ctrl'):  # if key 'q' is pressed
+            csv_writer.writerow(measurements)
+                #print("writing...")
 
-        measurements_np = np.asarray(measurements).astype(float)
+            if keyboard.is_pressed('esc'):
+                csv_writer.close()
+                break
 
-        print(measurements_np)
+            measurements_np = np.asarray(measurements).astype(float)
+
+            print(measurements_np)
+
+        except Exception as e:
+            print(str(e))
+            print('could not read sensor')
+
