@@ -16,9 +16,9 @@ checkpoint_path = "trained_network/cp.ckpt"
 dataset_path = 'calibration3/all_data.csv'
 
 # script options
-performance_plots = 1
+performance_plots = 0
 dataset_plots = 0
-test_loading = 0
+test_loading = 1
 
 
 # normalize data
@@ -159,3 +159,11 @@ if test_loading:
     model.load_weights(checkpoint_path)
     _, mae, _ = model.evaluate(normed_test_data, test_labels, verbose=0)
     print("Restored model, Mean Abs Error: {:5.2f} percent".format(mae))
+
+    # predict two example measurements
+    np_data_100 = normed_test_data.iloc[-1].to_frame().transpose()
+    np_data_0 = normed_test_data.iloc[0].to_frame().transpose()
+    pred_0 = model.predict(np_data_0)
+    pred_100 = model.predict(np_data_100)
+    print(str(pred_0))
+    print(str(pred_100))
