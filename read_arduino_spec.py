@@ -8,6 +8,21 @@ import sys
 import numpy as np
 import keyboard
 
+import nn_util.nn_util as nn_util
+import pandas as pd
+
+# script options
+classify = 1
+
+if classify:
+    # parameters
+    checkpoint_path = "trained_network/cp.ckpt"
+    num_keys = 18
+
+    # load the pre-trained model
+    model = nn_util.build_model(num_keys)
+    model.load_weights(checkpoint_path)
+
 # serial communication
 try:
     if platform.system() == 'Windows':
@@ -30,7 +45,6 @@ with open(path.join('calibration3/', 'log_calibration' + str(time.time()) + '.cs
         try:
 
             sobj.flushInput()
-            #time.sleep(0.1)
             sobj.flushOutput()
             output = sobj.readline()
             output = output.decode("utf-8")
@@ -49,6 +63,23 @@ with open(path.join('calibration3/', 'log_calibration' + str(time.time()) + '.cs
             measurements_np = np.asarray(measurements).astype(float)
 
             print(measurements_np)
+
+            if classify:
+
+                # normalize the data
+                measurements_normalized = nn_util.norm(measurements_np)
+
+                # predict blood/water ratio with nn
+                measure_df = pd.DataFrame(measurements_normalized).transpose()
+                prediction = model.predict(measure_df).flatten()
+                correction_factor = prediction / 100
+
+                if correction_factor > 1:
+                    correction_factor = 1
+                elif correction_factor < 0:
+                    correction_factor = 0
+
+                print('Estimated correction factor: ' + str(correction_factor))
 
         except Exception as e:
             print(str(e))

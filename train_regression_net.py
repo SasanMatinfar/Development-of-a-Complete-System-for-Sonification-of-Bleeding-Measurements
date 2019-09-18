@@ -13,9 +13,10 @@ import nn_util.nn_util as nn_util
 # parameters
 EPOCHS = 1000
 checkpoint_path = "trained_network/cp.ckpt"
+dataset_path = 'calibration3/all_data.csv'
 
 # script options
-performance_plots = 0
+performance_plots = 1
 dataset_plots = 0
 test_loading = 0
 
@@ -27,7 +28,7 @@ def norm(x):
 
 # Display training progress by printing a single dot for each completed epoch
 class PrintEpochs(keras.callbacks.Callback):
-    def on_epoch_end(self, epoch, logs):
+    def on_epoch_end(self, epoch, logs=None):
         if epoch % 100 == 0:
             print('Epoch: ' + str(epoch))
 
@@ -48,7 +49,7 @@ def plot_history(history_):
     plt.plot(hist['epoch'], hist['mean_absolute_error'],
              label='Train Error')
     plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
-             label = 'Val Error')
+             label='Val Error')
     plt.legend()
 
     plt.figure()
@@ -57,7 +58,7 @@ def plot_history(history_):
     plt.plot(hist['epoch'], hist['mean_squared_error'],
              label='Train Error')
     plt.plot(hist['epoch'], hist['val_mean_squared_error'],
-             label = 'Val Error')
+             label='Val Error')
     plt.legend()
     plt.show()
 
@@ -83,19 +84,20 @@ def plot_test_performance():
 
 
 # import spectrometer data
-dataset_path = 'Calibration_fullStream/all_data.csv'
 column_names = ['channel_1', 'channel_2', 'channel_3', 'channel_4', 'channel_5', 'channel_6',
                 'channel_7', 'channel_8', 'channel_9', 'channel_10', 'channel_11', 'channel_12',
                 'channel_13', 'channel_14', 'channel_15', 'channel_16', 'channel_17', 'channel_18',
                 'target']
-raw_dataset = pd.read_csv(dataset_path, names=column_names, na_values = "?", comment='\t', sep=",",
+raw_dataset = pd.read_csv(dataset_path, names=column_names, na_values="?", comment='\t', sep=",",
                           skipinitialspace=True)
 dataset = raw_dataset.copy()
+
+# drop rows that could not be read
+dataset = dataset.dropna()
 
 # split data into train and test set and randomize training data
 train_dataset = dataset.sample(frac=0.8, random_state=0)
 test_dataset = dataset.drop(train_dataset.index)
-dataset = dataset.dropna()
 
 # inspect the data
 if dataset_plots:
@@ -147,15 +149,13 @@ test_predictions = model.predict(normed_test_data).flatten()
 if performance_plots:
     plot_test_performance()
 
-###########################################################################
-
 if test_loading:
     # test model loading
     model = nn_util.build_model(len(train_dataset.keys()))
 
-    loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
+    _, mae, _ = model.evaluate(normed_test_data, test_labels, verbose=0)
     print("Untrained model, Mean Abs Error: {:5.2f} percent".format(mae))
 
     model.load_weights(checkpoint_path)
-    loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
+    _, mae, _ = model.evaluate(normed_test_data, test_labels, verbose=0)
     print("Restored model, Mean Abs Error: {:5.2f} percent".format(mae))
