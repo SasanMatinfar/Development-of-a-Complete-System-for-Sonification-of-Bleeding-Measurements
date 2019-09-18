@@ -13,7 +13,7 @@ import nn_util.nn_util as nn_util
 # parameters
 EPOCHS = 1000
 checkpoint_path = "trained_network/cp.ckpt"
-dataset_path = 'calibration3/all_data.csv'
+dataset_path = 'calibration/calibration3/all_data.csv'
 
 # script options
 performance_plots = 0

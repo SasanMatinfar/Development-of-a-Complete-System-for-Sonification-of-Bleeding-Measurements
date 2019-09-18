@@ -35,7 +35,7 @@ except Exception as e:
     print(e, file=sys.stderr)
     exit()
 
-with open(path.join('calibration3/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
+with open(path.join('calibration/calibration3/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
 
     csv_writer = csv.writer(csv_file, delimiter=',', dialect='excel')
     csv_writer.writerow(['610 nm', '680 nm', '730 nm', '760 nm', '810 nm', '860 nm', '560 nm', '585 nm', '645 nm',
