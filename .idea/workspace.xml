@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!">
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering-waterdrop.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-rt-filtering-waterdrop.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples-working on japanese.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sonification of Bleeding-filter on volume, natural soundscape 3 examples-working on japanese.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arduinoserial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../arduinoserial/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,7 +14,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="study_step0.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/study_step0.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log_refactored_correction_factor.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log_refactored_correction_factor.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8040">
+              <caret line="536" column="10" selection-start-line="536" selection-start-column="10" selection-end-line="536" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>;</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>,</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,6 +52,7 @@
         <option value="$PROJECT_DIR$/Sonification of Bleeding with Moving Average.ipynb" />
         <option value="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb" />
         <option value="$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features-Pbind.ipynb" />
+        <option value="$PROJECT_DIR$/study_step0.csv" />
       </list>
     </option>
   </component>
@@ -343,15 +371,22 @@
       <option name="project" value="LOCAL" />
       <updated>1562246562202</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="all nine examples completed ready to record">
+      <created>1564476775706</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1564476775706</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" side_tool="true" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003524" side_tool="true" visible="true" weight="0.32893" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
@@ -365,7 +400,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49964765" visible="true" weight="0.32893" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -396,9 +431,24 @@
     <MESSAGE value="finalize fine tuning nature_two_sonification" />
     <MESSAGE value="fine tune sample thunder" />
     <MESSAGE value="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!" />
-    <option name="LAST_COMMIT_MESSAGE" value="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!" />
+    <MESSAGE value="all nine examples completed ready to record" />
+    <option name="LAST_COMMIT_MESSAGE" value="all nine examples completed ready to record" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/study_step0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log_refactored_correction_factor.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8040">
+          <caret line="536" column="10" lean-forward="true" selection-start-line="536" selection-start-column="10" selection-end-line="536" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Sonification of Bleeding-Filterbank-Features.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -454,6 +504,20 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log_refactored_correction_factor.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8040">
+          <caret line="536" column="10" selection-start-line="536" selection-start-column="10" selection-end-line="536" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/study_step0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
