@@ -12,7 +12,7 @@ import nn_util.nn_util as nn_util
 checkpoint_path = "trained_network/cp.ckpt"
 num_keys = 18
 
-# option to use simple linear regression instead of neural network
+# option to use simple 1D linear regression instead of neural network
 linear_regression_only = 1
 
 # load the pre-trained model
@@ -23,7 +23,7 @@ model.load_weights(checkpoint_path)
 try:
     if platform.system() == 'Windows':
         sobj_spectro = serial.Serial('COM6', 115200)
-        sobj_scale = serial.Serial('COM5', 9600)
+        sobj_scale = serial.Serial('COM4', 9600)
 
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
@@ -47,6 +47,7 @@ time_now = 0
 time_old = 0
 d_volume_blood_sum = 0
 measurements = 0
+correction_factor_current = 0
 
 column_names = ['channel_1', 'channel_2', 'channel_3', 'channel_4', 'channel_5', 'channel_6',
                 'channel_7', 'channel_8', 'channel_9', 'channel_10', 'channel_11', 'channel_12',
@@ -57,35 +58,49 @@ column_names = ['channel_1', 'channel_2', 'channel_3', 'channel_4', 'channel_5',
 # apply correction factor from spectroscope sensor
 def get_correction(d_volume):
 
+    global correction_factor_current
+    measurements_np = []
+
     # read and decode the signal
     sobj_spectro.flushInput()  # flush the buffer
     output = sobj_spectro.readline()
     output = output.decode("utf-8")
     result = [x.strip() for x in output.split(',')]
     measure = result[1::2]
-    measurements_np = np.asarray(measure).astype(float)
+    try:
+        measurements_np = np.asarray(measure).astype(float)
 
-    # normalize the data
-    measurements_normalized = nn_util.norm(measurements_np)
+        # normalize the data
+        measurements_normalized = nn_util.norm(measurements_np)
 
-    if linear_regression_only:
-        # use linear regression calibration to predict the ratio
-        channel_5 = -0.122704271556754 * measurements_np[4] + 162.649360670805
-        channel_11 = 19162115930.2037 * measurements_np[10] ** -2.90650655001071
-        correction_factor = (channel_5 + channel_11) / 2 / 100
+        if linear_regression_only:
+            # we use a second order sum of sine fit
+            x = measurements_np[4]
+            a1 = 316.6398
+            b1 = 4.9845e-04
+            c1 = 2.3296
+            a2 = 97.1001
+            b2 = 0.0019
+            c2 = 3.2029
+            correction_factor = (a1 * np.sin(b1 * x + c1) + a2 * np.sin(b2 * x + c2)) / 100
+        else:
+            # predict blood/water ratio with neural net
+            measure_df = pd.DataFrame(measurements_normalized).transpose()
+            prediction = model.predict(measure_df).flatten()
+            correction_factor = prediction / 100
 
-    else:
-        # predict blood/water ratio with nn
-        measure_df = pd.DataFrame(measurements_normalized).transpose()
-        prediction = model.predict(measure_df).flatten()
-        correction_factor = prediction / 100
+        if correction_factor > 1:
+            correction_factor = 1
+        elif correction_factor < 0:
+            correction_factor = 0
 
-    if correction_factor > 1:
-        correction_factor = 1
-    elif correction_factor < 0:
-        correction_factor = 0
+        correction_factor_current = correction_factor
 
-    return d_volume * correction_factor, correction_factor, measurements_np
+    except Exception as exc:
+        print(str(exc))
+        print('Spectrometer overflow')
+
+    return d_volume * correction_factor_current, correction_factor_current, measurements_np
 
 
 # run data acquisition loop

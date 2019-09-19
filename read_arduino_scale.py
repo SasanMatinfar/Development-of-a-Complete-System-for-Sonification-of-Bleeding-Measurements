@@ -10,7 +10,7 @@ import sys
 # serial communication
 try:
     if platform.system() == 'Windows':
-        sobj = serial.Serial('COM12', 9600)
+        sobj = serial.Serial('COM4', 9600)
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
         sobj = serial.Serial('/dev/tty.usbserial-1430', 9600)

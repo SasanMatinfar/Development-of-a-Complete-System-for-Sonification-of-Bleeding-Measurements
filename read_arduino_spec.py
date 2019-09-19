@@ -1,20 +1,19 @@
 # import packages
 import serial
 import platform
-import time
-import csv
-from os import path
 import sys
 import numpy as np
-import keyboard
-
-import nn_util.nn_util as nn_util
 import pandas as pd
+import nn_util.nn_util as nn_util
 
 # script options
 classify = 1
+regression_1d = 1
 
-if classify:
+# init
+correction_factor = 0
+
+if ~regression_1d:
     # parameters
     checkpoint_path = "trained_network/cp.ckpt"
     num_keys = 18
@@ -35,53 +34,51 @@ except Exception as e:
     print(e, file=sys.stderr)
     exit()
 
-with open(path.join('calibration/calibration3/', 'log_calibration' + str(time.time()) + '.csv'), 'w', newline='') as csv_file:
+# run the data acquisition loop and estimate the 
+while True:
 
-    csv_writer = csv.writer(csv_file, delimiter=',', dialect='excel')
-    csv_writer.writerow(['610 nm', '680 nm', '730 nm', '760 nm', '810 nm', '860 nm', '560 nm', '585 nm', '645 nm',
-                         '705 nm', '900 nm', '940 nm', '410 nm', '435 nm', '460 nm', '485 nm', '510 nm', '535 nm'])
-    while True:
+    try:
 
-        try:
+        sobj.flushInput()
+        sobj.flushOutput()
+        output = sobj.readline()
+        output = output.decode("utf-8")
 
-            sobj.flushInput()
-            sobj.flushOutput()
-            output = sobj.readline()
-            output = output.decode("utf-8")
+        result = [x.strip() for x in output.split(',')]
+        measurements = result[1::2]
 
-            result = [x.strip() for x in output.split(',')]
-            measurements = result[1::2]
+        measurements_np = np.asarray(measurements).astype(float)
+        print(measurements_np)
 
-            #if keyboard.is_pressed('ctrl'):  # if key 'q' is pressed
-            csv_writer.writerow(measurements)
-                #print("writing...")
+        if classify:
 
-            if keyboard.is_pressed('esc'):
-                csv_writer.close()
-                break
+            if regression_1d:
+                x = measurements_np[4]
+                a1 = 316.6398
+                b1 = 4.9845e-04
+                c1 = 2.3296
+                a2 = 97.1001
+                b2 = 0.0019
+                c2 = 3.2029
+                correction_factor = (a1 * np.sin(b1 * x + c1) + a2 * np.sin(b2 * x + c2)) / 100
 
-            measurements_np = np.asarray(measurements).astype(float)
-
-            print(measurements_np)
-
-            if classify:
-
+            else:
                 # normalize the data
                 measurements_normalized = nn_util.norm(measurements_np)
 
                 # predict blood/water ratio with nn
                 measure_df = pd.DataFrame(measurements_normalized).transpose()
                 prediction = model.predict(measure_df).flatten()
+                print("Prediction: " + str(prediction))
                 correction_factor = prediction / 100
 
-                if correction_factor > 1:
-                    correction_factor = 1
-                elif correction_factor < 0:
-                    correction_factor = 0
+            if correction_factor > 1:
+                correction_factor = 1
+            elif correction_factor < 0:
+                correction_factor = 0
 
-                print('Estimated correction factor: ' + str(correction_factor))
+    except Exception as e:
+        print(str(e))
+        print('could not read sensor')
 
-        except Exception as e:
-            print(str(e))
-            print('could not read sensor')
-
+    print('Estimated correction factor: ' + str(correction_factor))
