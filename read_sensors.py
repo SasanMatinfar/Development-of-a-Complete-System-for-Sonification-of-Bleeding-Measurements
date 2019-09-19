@@ -97,6 +97,8 @@ def get_correction(d_volume):
         correction_factor_current = correction_factor
 
     except Exception as exc:
+        # spectrometer overflow indicates water only
+        correction_factor_current = 0
         print(str(exc))
         print('Spectrometer overflow')
 

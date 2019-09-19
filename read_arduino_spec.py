@@ -34,7 +34,7 @@ except Exception as e:
     print(e, file=sys.stderr)
     exit()
 
-# run the data acquisition loop and estimate the 
+# run data acquisition loop
 while True:
 
     try:
