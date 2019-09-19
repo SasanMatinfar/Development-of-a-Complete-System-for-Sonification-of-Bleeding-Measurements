@@ -1,3 +1,5 @@
+"""Script for acquisition of calibration data from the AMS AS7265X Sensor"""
+
 # import packages
 import serial
 import platform

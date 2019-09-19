@@ -1,3 +1,14 @@
+"""Script for prediction of blood volume for the surgical suction
+
+Serial communication with sensors:
+ -- blood/water ratio predicted from AMS AS7265X Sensor output
+ -- weight read from HX711 ADC
+
+Change parameter 'linear_regression_only' to:
+    -- 'True' to use sum of sine fit
+    -- 'False'  to use neural network
+"""
+
 # import packages
 import serial
 import platform
@@ -5,15 +16,14 @@ import time
 import sys
 import numpy as np
 import pandas as pd
-
 import nn_util.nn_util as nn_util
+
+# option to use simple 1D linear regression instead of neural network
+linear_regression_only = 1
 
 # parameters
 checkpoint_path = "trained_network/cp.ckpt"
 num_keys = 18
-
-# option to use simple 1D linear regression instead of neural network
-linear_regression_only = 1
 
 # load the pre-trained model
 model = nn_util.build_model(num_keys)
@@ -29,6 +39,7 @@ try:
         # Mac serial call goes here - add your COM Port
         sobj_spectro = serial.Serial('/dev/tty.usbmodem141101', 115200)
         sobj_scale = serial.Serial('/dev/tty.usbserial-1430', 9600)
+
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
     print('Please connect both sensors', file=sys.stderr)
@@ -49,15 +60,11 @@ d_volume_blood_sum = 0
 measurements = 0
 correction_factor_current = 0
 
-column_names = ['channel_1', 'channel_2', 'channel_3', 'channel_4', 'channel_5', 'channel_6',
-                'channel_7', 'channel_8', 'channel_9', 'channel_10', 'channel_11', 'channel_12',
-                'channel_13', 'channel_14', 'channel_15', 'channel_16', 'channel_17', 'channel_18',
-                'target']
-
 
 # apply correction factor from spectroscope sensor
 def get_correction(d_volume):
 
+    # init
     global correction_factor_current
     measurements_np = []
 
@@ -68,6 +75,8 @@ def get_correction(d_volume):
     result = [x.strip() for x in output.split(',')]
     measure = result[1::2]
     try:
+
+        # convert to np array
         measurements_np = np.asarray(measure).astype(float)
 
         # normalize the data
@@ -115,10 +124,9 @@ while True:
         # read the weight from Hx711
         sobj_scale.flushInput()  # flush the buffer
         grams = sobj_scale.readline()
-
         grams = float(grams.decode("utf-8"))
-        # print(grams)
 
+        # assert no negative measurements
         if grams > max_grams:
             d_grams = grams - max_grams
             max_grams = grams
@@ -132,9 +140,6 @@ while True:
         # accumulate delta until we print it
         d_volume_blood_sum += d_volume_blood
 
-        # compute accumulated blood volume
-        volume_accumulated += d_volume_blood
-
         # trend of volume change
         dd_volume = d_volume_blood_sum - d_volume_old
 
@@ -147,7 +152,7 @@ while True:
             print('Predicted correction factor: ' + str(pred))
             print('----------------------------------------------------')
             print('Grams: ' + str(int(grams)))
-            print("Accumulated blood: " + str(int(volume_accumulated)))
+            print("Accumulated blood: " + str(int(d_volume_blood_sum)))
             # print("Water accumulated: " + str(int(water_accumulated)))
             print("Delta: " + str(int(d_volume_blood_sum)))
             print("Trend: " + str(int(dd_volume)))

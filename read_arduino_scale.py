@@ -1,3 +1,5 @@
+"""Script to test the scale based on HX711 ADC output"""
+
 # import packages
 import serial
 import platform

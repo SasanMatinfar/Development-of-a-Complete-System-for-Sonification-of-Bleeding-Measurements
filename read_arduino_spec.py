@@ -1,3 +1,5 @@
+"""Script to test prediction of blood/water ratio based on AMS AS7265X Sensor output"""
+
 # import packages
 import serial
 import platform

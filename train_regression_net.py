@@ -1,3 +1,5 @@
+"""script for training a fully connected neural network on AMS AS7265X Sensor output"""
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import os

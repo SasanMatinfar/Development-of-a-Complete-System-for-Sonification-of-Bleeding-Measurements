@@ -1,3 +1,5 @@
+"""Utility functions for fully connected neural network"""
+
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.contrib.keras import layers
