@@ -37,8 +37,8 @@ try:
 
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
-        sobj_spectro = serial.Serial('/dev/tty.usbmodem143101', 115200)
-        sobj_scale = serial.Serial('/dev/tty.usbserial-1410', 9600)
+        sobj_spectro = serial.Serial('/dev/tty.usbmodem14101', 115200)
+        sobj_scale = serial.Serial('/dev/tty.usbserial-14310', 9600)
 
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
