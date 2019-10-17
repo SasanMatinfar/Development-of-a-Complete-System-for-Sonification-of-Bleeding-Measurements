@@ -22,12 +22,11 @@ void setup() {
   Serial.begin(9600);
   
   // calibration
-  scale.setScale(-289.07);
+  scale.setScale(-333.07);
 
 }
 
 void loop() {
   Serial.println(scale.getGram(), 1);
-  // Serial.println(scale.getValue());
  //  delay(2000);
 }
