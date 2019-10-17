@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="" />
+    <list default="true" id="d4121b95-cf8c-4335-918f-efeb2016f0d8" name="Default" comment="update statistical analysis &#10;add ANOVA">
+      <change beforePath="$PROJECT_DIR$/Result Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Result Analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arduinoserial/.ipynb_checkpoints/Sonification of Bleeding, DEMO in OPS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../arduinoserial/.ipynb_checkpoints/Sonification of Bleeding, DEMO in OPS-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arduinoserial/Sonification of Bleeding, DEMO in OPS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../arduinoserial/Sonification of Bleeding, DEMO in OPS.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -44,7 +48,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -56,6 +59,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -362,20 +366,37 @@
       <option name="project" value="LOCAL" />
       <updated>1568811926162</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="update statistical analysis &#10;add ANOVA">
+      <created>1571145317810</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1571145317810</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31994364" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003524" side_tool="true" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5017618" side_tool="true" visible="true" weight="0.32893" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49964765" weight="0.32893" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4989429" weight="0.32893" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.4982382" visible="true" weight="0.32893" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4982382" weight="0.32893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -384,14 +405,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49964765" visible="true" weight="0.32893" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change path" />
     <MESSAGE value="applied lfilter on the features" />
     <MESSAGE value="clear outputs" />
     <MESSAGE value="add lfilter" />
@@ -416,7 +435,8 @@
     <MESSAGE value="fine tune nature_two_sonification&#10;from now all three nature sonifiction examples are fine tuned!" />
     <MESSAGE value="all nine examples completed ready to record" />
     <MESSAGE value="add result analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="add result analysis" />
+    <MESSAGE value="update statistical analysis &#10;add ANOVA" />
+    <option name="LAST_COMMIT_MESSAGE" value="update statistical analysis &#10;add ANOVA" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/study_step0.csv">
