@@ -15,7 +15,7 @@ try:
         sobj = serial.Serial('COM4', 9600)
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
-        sobj = serial.Serial('/dev/tty.usbserial-14310', 9600)
+        sobj = serial.Serial('/dev/tty.usbserial-1430', 9600)
 except Exception as e:
     print(e, file=sys.stderr)
     exit()
