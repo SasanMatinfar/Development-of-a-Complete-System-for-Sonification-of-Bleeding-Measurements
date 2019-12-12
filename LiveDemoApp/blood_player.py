@@ -18,10 +18,8 @@ class Bloodplayer:
         self.stopevent = threading.Event()
         self.callback_fn = None
         self.idx = 0
-        #self.length = 200000
         self.verbose = verbose
         self.pulse_time = pulse_time
-        self.rtime = pulse_time
         self.checkpoint_path = "trained_network/cp.ckpt"
         self.oneD_regression_only = 1
         self.model = training_model.build_model(18)
@@ -62,11 +60,9 @@ class Bloodplayer:
 
     def procfn(self):
         self.idx = 0
-        #self.rtime = 0
         while not self.stopevent.wait(0):
             try:
                 time_now = time.time()
-                #time.sleep(0.05)
 
                 # read the weight from Hx711
                 training_model.sobj_scale.flushInput()
@@ -114,13 +110,8 @@ class Bloodplayer:
                         self.callback_fn(self)
                     else:
                         self.callback_fn_default(v)
-                    #self.rtime += self.pulse_time
-                    #self.idx = int(self.rtime)
                     self.idx += self.pulse_time
                     time.sleep(self.pulse_time)
-                    print('!!!!!!!!!!!!!!!!')
-                    print(self.idx)
-                    print('!!!!!!!!!!!!!!!!')
 
             except Exception as e:
                 print(str(e))

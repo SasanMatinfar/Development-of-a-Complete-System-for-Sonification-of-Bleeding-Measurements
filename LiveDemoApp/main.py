@@ -1,13 +1,11 @@
 import time
 import os
-import copy
-import scipy.interpolate
 import numpy as np
 import sc3nb as scn
-
-from scipy import signal
-from blood_player import Bloodplayer
 import logging
+
+from blood_player import Bloodplayer
+
 
 log_format = '%(levename)s %(asctime)s - %(message)s'
 logging.basicConfig(filename='test.log', level=logging.DEBUG, format=log_format)
@@ -19,13 +17,13 @@ sc = scn.startup()
 
 # Buffers
 buffers = [
-sc.Buffer().load_file("samples/water-shake.wav"),
-sc.Buffer().load_file("samples/birds.wav"),
-sc.Buffer().load_file("samples/rain.wav"),
-sc.Buffer().load_file("samples/thunder.wav"),
-sc.Buffer().load_file("samples/seaguls.wav"),
-sc.Buffer().load_file("samples/bell.wav"),
-sc.Buffer().load_file("samples/bell2.wav")
+    sc.Buffer().load_file("samples/water-shake.wav"),
+    sc.Buffer().load_file("samples/birds.wav"),
+    sc.Buffer().load_file("samples/rain.wav"),
+    sc.Buffer().load_file("samples/thunder.wav"),
+    sc.Buffer().load_file("samples/seagulls.wav"),
+    sc.Buffer().load_file("samples/bell.wav"),
+    sc.Buffer().load_file("samples/bell2.wav")
 ]
 
 water = buffers[0].bufnum
@@ -36,7 +34,7 @@ seagulls = buffers[4].bufnum
 bell = buffers[5].bufnum
 bell2 = buffers[6].bufnum
 
-bufnums = [water, birds, rain]
+bufnums = [water, seagulls, rain]
 
 
 # WaveTables
@@ -369,7 +367,6 @@ e.add(\pad_sine_lf_old -> {
 
 if __name__ == '__main__':
     bloodplayer = Bloodplayer()
-
     delta_max = 10
     volume_max = 1000
     bloodplayer.volume_accumulated = 0
@@ -377,7 +374,6 @@ if __name__ == '__main__':
     factor_v0 = 1
     factor_v1 = 1
     factor_v2 = 1
-
     tau = [5, 20, 40]
     v0 = [0, 0]
     v1 = [0, 0]
@@ -386,28 +382,31 @@ if __name__ == '__main__':
     amp = [0, 0, 0]
     rate = [0, 0, 0]
     pan = [0, 0, 0]
-    cf = [0, 0, 0]
-    a = []
-    b = []
-    zi = []
-    zl = [[0, 0, 0]]
-    cfs = [0.01, 0.05, 0.5]
-    z = [None] * len(cfs)
-    sr = 1 / bloodplayer.pulse_time
     node_base_cont = 5000
     node_base_event = 5010
     node_base_clock = 5050
     takt_rate = 100  # one beat per each takt_rate ml
-    volume_threshold = 1  # ml threshold for volume
-    amp_level_mv_volume = 0
+    volume_threshold = 0  # ml threshold for volume
 
-    def init(bufnums):
-        if not bufnums:
+    def init(buff_list):
+        if not buff_list:
             os.write(1, "no buffer needed to initiate for this sonification   ".encode())
         else:
-            for i, bufnum in enumerate(bufnums):
-                sc.msg("/s_new", ["pb-simple", (node_base_cont + i), 1, 1, "bufnum", bufnum, "rate", 1, "amp", 0])
+            for i, buffer in enumerate(buff_list):
+                sc.msg("/s_new", ["pb-simple", (node_base_cont + i), 1, 1, "bufnum", buffer, "rate", 1, "amp", 0])
 
+    def clock_event(buff, v, r):
+        if v < volume_threshold:
+            pass
+        elif v >= volume_threshold:
+            amplitude = 0.05
+            sc.msg("/s_new", ["pb-simple", node_base_clock, 1, 1, "bufnum", buff, "rate", r, "amp", amplitude,
+                              "loop", 0])
+
+    def event_off(buf_node):
+        sc.msg("/n_set", [buf_node, "rate", 0.4, "amp", 0.2, "lgrt", 1, "lgamp", 1])
+        time.sleep(1)
+        sc.msg("/n_free", [buf_node])
 
     def tau_zero(self):
         # *** water *** tau 0 = 5 seconds
@@ -425,98 +424,66 @@ if __name__ == '__main__':
             rate[0] = np.clip(rate[0], 1.5, 4)
             sc.msg("/n_set", [node_base_cont, "rate", rate[0]])
 
+        # Event *** thunder ***
+        if self.volume[-1] >= volume_threshold:
 
-    def event_off(buf_node, bufnum):
-        #sc.msg("/s_new",
-         #      ["pb-simple", buf_node, 1, 1, "bufnum", bufnum, "rate", 0.5, "amp", 0.4, "loop", 1, "lgrt", 2, "lgamp", 2, "cf", 400])
-        #time.sleep(2)
-        #sc.msg("/s_new", ["pb-simple", buf_node, 1, 1, "bufnum", bufnum, "rate", 0.3, "amp", 0.2, "loop", 1, "lgrt", 2, "lgamp", 3, "cf", 200])
-        #time.sleep(3)
-        sc.msg("/s_new", ["pb-simple", buf_node, 1, 1, "bufnum", bufnum, "rate", 0.2, "amp", 0.05, "loop", 0, "lgrt", 1, "lgamp", 1, "cf", 100])
-        time.sleep(1)
-        sc.msg("/n_free", [buf_node])
-
-
-    def clock_event(bufnum, volume, takt, rate, version):
-        if volume < volume_threshold:
-            amp_event = 0
-        elif volume >= volume_threshold:
-            amp_event = 0.05
-        sc.msg("/s_new",
-               ["pb-simple", (node_base_clock), 1, 1, "bufnum", bufnum, "rate", rate, "amp", amp_event, "loop", 0])
-
-        # for t in range(1, takt+1):
-        #    sc.msg("/s_new", ["pb-simple", (node_base_clock + t), 1, 1, "bufnum", bufnum, "rate", rate, "amp", amp_event, "loop", 0])
-        #    if version == True:
-        #        time.sleep(3/takt)
-        #    else:
-        #        time.sleep(1)
+            if v0[1] < 0.7 * factor_v0 < v0[0]:
+                sc.msg("/s_new",
+                       ["pb-simple", node_base_event, 1, 1, "bufnum", thunder, "rate", 0.9, "amp", 0.9, "loop", 1,
+                        "lgrt", 2, "lgamp", 2, "cf", 500])
+            if v0[0] < 0.7 * factor_v0 < v0[1]:
+                event_off(node_base_event)
+            v0[1] = v0[0]
 
     def sonification_nature(self):
-        # tau 0 = 5 seconds
-        # *** water ***
+        # tau 0 = 5 seconds *** water ***
         tau_zero(self)
 
-        # tau 1 = 30 seconds
-        amp_level_mv_volume = scn.linlin(self.volume[-1], 0, volume_max, 0, 1)
-        amp_level_mv_volume = np.clip(amp_level_mv_volume, 0, 1)
+        # tau 1 = 30 seconds *** seagulls ***
+        amp_volume = scn.linlin(self.volume[-1], 0, volume_max, 0, 1)
+        amp_volume = np.clip(amp_volume, 0, 1)
 
         if len(self.volume) <= tau[1]:
             v1[0] = ((self.volume[-1] - self.volume[0]) / tau[1]) * factor_v1
         else:
             v1[0] = ((self.volume[-1] - self.volume[-(tau[1] + 1)]) / tau[1]) * factor_v1
 
-        # *** birds ***
         if v1[0] < 0.5 * factor_v1:
-            amp[1] = v1[0] / 2 * amp_level_mv_volume
+            amp[1] = (v1[0] / 2) * amp_volume
             sc.msg("/n_set", [node_base_cont + 1, "rate", 1, "amp", amp[1]])
         if v1[0] >= 0.5 * factor_v1:
             amp[1] = scn.linlin(v1[0], 0.5, 2, 0.25, 1)
-            amp[1] = np.clip(amp[1], 0.25, 1) * amp_level_mv_volume
+            amp[1] = np.clip(amp[1], 0.25, 1) * amp_volume
             rate[1] = scn.linlin(v1[0], 0.5, 2, 1, 2.5)
             rate[1] = np.clip(rate[1], 1, 2.5)
             sc.msg("/n_set", [node_base_cont + 1, "rate", rate[1], "amp", amp[1]])
 
-        # *** rain ***
-        if v1[0] < 0.75 * factor_v2:
-            sc.msg("/n_set", [node_base_cont + 2, "rate", 0.6, "amp", 0.05, "pan", 1])
-
-        elif v1[0] >= 0.75 * factor_v2:
-            amp[2] = scn.linlin(v1[0], 0.25, 0.5, 0.05, 0.3)
-            amp[2] = np.clip(amp[2], 0.1, 0.3) * amp_level_mv_volume
-            rate[2] = scn.linlin(v1[0], 0.25, 0.5, 0.6, 1.2)
-            rate[2] = np.clip(rate[2], 0.6, 1.2)
-            pan[2] = scn.linlin(v1[0], 0.25, 0.5, 1, 0)
-            pan[2] = np.clip(pan[2], 1, 0)
-            sc.msg("/n_set", [node_base_cont + 2, "rate", rate[2], "amp", amp[2], "pan", pan[2]])
-
-            # tau 2 = 2 minutes
+        # tau 2 = 2 minutes *** rain ***
         if len(self.volume) <= tau[2]:
             v2[0] = ((self.volume[-1] - self.volume[0]) / tau[2]) * factor_v2
         else:
             v2[0] = ((self.volume[-1] - self.volume[-(tau[2] + 1)]) / tau[2]) * factor_v2
 
-        # *** thunder ***
-        if self.volume[-1] >= volume_threshold:  # ml
+        if v2[0] < 0.75 * factor_v2:
+            sc.msg("/n_set", [node_base_cont + 2, "rate", 0.6, "amp", 0.05, "pan", 1])
 
-            if v2[0] >= 0.7 * factor_v1 and v2[1] < 0.7 * factor_v1:
-                sc.msg("/s_new",
-                       ["pb-simple", node_base_event, 1, 1, "bufnum", thunder, "rate", 0.9, "amp", 0.9, "loop", 1,
-                        "lgrt",
-                        2, "lgamp", 2, "cf", 500])
-            if v2[0] < 0.7 * factor_v1 and v2[1] > 0.7 * factor_v1:
-                event_off(node_base_event, thunder)
-            v2[1] = v2[0]
+        elif v2[0] >= 0.75 * factor_v2:
+            amp[2] = scn.linlin(v2[0], 0.25, 0.5, 0.05, 0.3)
+            amp[2] = np.clip(amp[2], 0.1, 0.3) * amp_volume
+            rate[2] = scn.linlin(v2[0], 0.25, 0.5, 0.6, 1.2)
+            rate[2] = np.clip(rate[2], 0.6, 1.2)
+            pan[2] = scn.linlin(v2[0], 0.25, 0.5, 1, 0)
+            pan[2] = np.clip(pan[2], 1, 0)
+            sc.msg("/n_set", [node_base_cont + 2, "rate", rate[2], "amp", amp[2], "pan", pan[2]])
 
-        os.write(1,
-                 f"\r{self.idx}, tau0: {float(v0[0]):4.2},  tau1: {float(v1[0]):4.2},  tau2: {float(v2[0]):4.2},   ".encode())
+        os.write(1, f'\r{self.idx}, tau0: {float(v0[0]):4.2},  tau1: {float(v1[0]):4.2},  '
+                    f'tau2: {float(v2[0]):4.2},   '.encode())
 
-        # clock-event for every 100 ml blood loss
+        # Volume clock-event for every 100 ml blood loss
         takt[0] = int(self.volume[-1] / takt_rate)
         if takt[0] > 0 and takt[0] != takt[1]:
-            clock_event(bell, self.volume[-1], takt[0], 1, True)
+            clock_event(bell, self.volume[-1], 1)
         takt[1] = takt[0]
-
 
     def sonification_algomusic_one(self):
         global a, b, z, zi, zl, ts, ys
@@ -597,8 +564,10 @@ if __name__ == '__main__':
         # clock-event for every 50 ml blood loss
         takt[0] = int(self.volume[-1] / takt_rate)
         if takt[0] > 0 and takt[0] != takt[1]:
-            clock_event(bell2, self.volume[-1], takt[0], 1.7, True)
+            clock_event(bell2, self.volume[-1], 1.7)
         takt[1] = takt[0]
+
+        os.write(1, f'\r{self.idx}, delta: {float(delta_val):4.2},  volume: {float(volume_val):4.2},  '.encode())
 
     def start_nature():
         global bloodplayer
@@ -620,5 +589,5 @@ if __name__ == '__main__':
         sc.msg("/n_free", node_base_cont + 2)
         sc.msg("/n_free", node_base_event)
 
-    #start_nature()
-    start_algomus()
+    start_nature()
+    #start_algomus()

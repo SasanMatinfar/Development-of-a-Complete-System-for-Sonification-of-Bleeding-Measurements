@@ -15,7 +15,7 @@ try:
     elif platform.system() == 'Darwin':
         # Mac serial call goes here - add your COM Port
         # sobj_spectro = serial.Serial('/dev/tty.usbmodem14301', 115200)
-        sobj_scale = serial.Serial('/dev/tty.usbserial-1410', 9600)
+        sobj_scale = serial.Serial('/dev/tty.usbserial-14310', 9600)
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
     print('Please connect both sensors', file=sys.stderr)
