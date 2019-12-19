@@ -2,12 +2,15 @@ import threading
 import training_model
 import os
 import time
-import csv
-
-from os import path
-from time import gmtime, strftime
-
 import logging
+import matplotlib.pyplot as plt
+import random
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 
 class Bloodplayer:
@@ -18,6 +21,7 @@ class Bloodplayer:
         self.stopevent = threading.Event()
         self.callback_fn = None
         self.idx = 0
+        #self.rtime = 0
         self.verbose = verbose
         self.pulse_time = pulse_time
         self.checkpoint_path = "trained_network/cp.ckpt"
@@ -37,16 +41,15 @@ class Bloodplayer:
         self.time_old = 0
         self.d_volume_blood_sum = 0
         self.measurements = 0
-        self.delta = [0]
-        self.volume = [0]
+        self.delta = [0.0]
+        self.volume = [0.0]
         self.correction_factor_current = 0
         self.vs0 = [None]
         self.vs1 = [None]
         self.vs2 = [None]
-        self.xs = [None]
+        self.xs = [0]
         self.ts = [None]
         self.ys = [None]
-        self.deltas = [0]
 
     def callback_fn_default(self, v):
         os.write(1, f"\r                       \r{v}".encode())
@@ -59,7 +62,7 @@ class Bloodplayer:
         return d_volume * self.correction_factor_current, self.correction_factor_current, measurements_np
 
     def procfn(self):
-        self.idx = 0
+        self.idx = 1
         while not self.stopevent.wait(0):
             try:
                 time_now = time.time()
@@ -88,15 +91,23 @@ class Bloodplayer:
                 # trend of volume change
                 self.dd_volume = self.d_volume_blood_sum - self.d_volume_old
 
+                #print('idx: ' + str(self.xs))
+                #print('delta: ' + str(self.delta))
+                #print('volume: ' + str(self.volume))
+
                 # print with ~1 Hz
                 if (time_now - self.time_old) >= 1:
+                    self.xs.append(self.idx)
+
                     self.delta.append(self.d_volume_blood_sum)
-                    v = self.delta[-1]
                     self.volume.append(self.volume_accumulated)
+                    v = self.delta[-1]
                     if len(self.delta) > 150:
                         self.delta.pop(0)
                         self.volume.pop(0)
-
+                        self.xs.pop(0)
+                    logging.debug('index: ' + str(self.idx) + ', delta: ' + str(self.d_volume_blood_sum) +
+                                  ", volume: " + str(self.volume_accumulated))
                     # reset timer
                     self.time_old = time_now
 
@@ -110,9 +121,11 @@ class Bloodplayer:
                         self.callback_fn(self)
                     else:
                         self.callback_fn_default(v)
-                    self.idx += self.pulse_time
-                    time.sleep(self.pulse_time)
-
+                    #self.rtime += self.pulse_time
+                    #self.idx = int(self.rtime)
+                    self.idx += self.pulse_time#
+                    #time.sleep(self.pulse_time)
+                    #plt.pause(self.pulse_time)
             except Exception as e:
                 print(str(e))
                 print('Could not read sensor output')
