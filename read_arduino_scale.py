@@ -22,7 +22,7 @@ except Exception as e:
 
 
 # initialization
-max_grams = 0
+grams_prev = 0
 output_volume = 0
 d_volume_old = 0
 dd_volume = 0
@@ -58,22 +58,20 @@ with open(os.path.join('logs/', 'log_bleedinglevel_' + str(time.time()) +
         grams = float(grams.decode("utf-8"))
         # print(grams)
 
-        if grams > max_grams:
-            d_grams = grams - max_grams
-            max_grams = grams
-        else:
+        d_grams = grams - grams_prev
+        grams_prev = grams
+
+        if d_grams < 0:
             d_grams = 0
 
         # apply correction factor from spectrometer to only get the blood amount and convert to volume
         d_volume_blood = get_correction(d_grams) / 1.060
-        d_volume_water = get_correction(d_grams) / 0.997
 
         # accumulate delta until we print it
         d_volume_blood_sum += d_volume_blood
 
         # compute accumulated blood volume
-        volume_accumulated += d_volume_blood
-        water_accumulated += d_volume_water
+        volume_accumulated = grams / 1.060
 
         # trend of volume change
         dd_volume = d_volume_blood_sum - d_volume_old
