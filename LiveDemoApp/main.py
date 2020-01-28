@@ -20,6 +20,10 @@ from matplotlib.figure import Figure
 from IPython.display import clear_output
 from ipywidgets import interact, interactive, fixed, interact_manual, Layout
 
+from matplotlib import pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+
 
 logger = logging.getLogger()
 fhandler = logging.FileHandler(filename='mylog.log', mode='a')
@@ -35,16 +39,15 @@ sc = scn.startup()
 #sc.cmd("s.meter")
 
 
-
 # Buffers
 buffers = [
     sc.Buffer().load_file("samples-normalized/water-shake.wav"),
     sc.Buffer().load_file("samples-normalized/rain.wav"),
     sc.Buffer().load_file("samples-normalized/thunder.wav"),
-    sc.Buffer().load_file("samples-normalized/seagulls.wav"),
+    sc.Buffer().load_file("samples-normalized/seagulls_tuned.wav"),
     sc.Buffer().load_file("samples-normalized/bell.wav"),
     sc.Buffer().load_file("samples-normalized/bell2.wav"),
-    sc.Buffer().load_file("samples-normalized/Kalimba_Dry.wav"),
+    sc.Buffer().load_file("samples-normalized/Kalimba_Dry_fadeIO.wav"),
 ]
 
 water = buffers[0].bufnum
@@ -367,55 +370,66 @@ if __name__ == '__main__':
     delta_scale = 1
     delta_max = 20
 
-    marimba_amp_range = [0.1, 1]
+    marimba_amp_range = [0.5, 1.5]
 
     tau4_amp = 0
     tau4_range = [1, 10]
-    tau4_amp_range = [0, 0.75]
+    tau4_amp_range = [0, 0.5]
     tau4_rate = 1
-    thrs_delta_tau4 = 1
+    thrs_delta_tau4 = 0
 
-    clock_event_amp = 0.1
+    clock_event_amp = 0.05
     clock_event_rate = 1.5
+    #thrs_tau4_glocke = 2
 
-    tau = [5, 20, 40, 10]
+    tau = [5, 20, 40, 5]
     takt_rate = 200  # one beat per each takt_rate ml
 
     #################################################################################################################
-
-
-
+    # TODO make GUI for all required parameter and save them in .npy file to recreate the parameter settings:
+    # TODO https://towardsdatascience.com/what-is-npy-files-and-why-you-should-use-them-603373c78883
+    # TODO make executable file
+    # TODO set minus values of volume to zero
+    # TODO test with while instead of threading
+    # TODO make clean up!!! in code and Gitlab repo. etc.
     # GUI Qt5
-    # app = QApplication([])
+    #app = QApplication([])
     #window = QWidget()
-    #layout = QVBoxLayout()
-    #line_edit = QLineEdit()
-    #top_button = QPushButton('Top')
-    #layout.addWidget(top_button)
-
-    # def on_top_button_clicked():
-    #    global amp_clock_event
-    #    amp_clock_event = amp_clock_event * 2
-    #top_button.clicked.connect(on_top_button_clicked)
-
-    #slider = QSlider(Qt.Horizontal)
-    #slider.setFocusPolicy(Qt.StrongFocus)
-    #slider.setTickPosition(QSlider.TicksAbove)
-    #slider.setTickInterval(10)
-    #slider.setSingleStep(1)
-
+    #main_layout = QHBoxLayout()
+    #layout_left = QVBoxLayout()
+    #layout_right = QVBoxLayout()
+    #main_layout.addLayout(layout_left)
+    #main_layout.addLayout(layout_right)
+#
+    #slider_clock_event_amp = QSlider(Qt.Horizontal)
+    #slider_clock_event_amp.setFocusPolicy(Qt.StrongFocus)
+    #slider_clock_event_amp.setTickPosition(QSlider.TicksAbove)
+    #slider_clock_event_amp.setTickInterval(10)
+    #slider_clock_event_amp.setSingleStep(1)
+#
     #def slider_value_changed():
-    #    global amp_clock_event
-    #    value = slider.value()/100
+    #    global clock_event_amp
+    #    value = slider_clock_event_amp.value() / 100
     #    line_edit.setText(str(value))
-    #    amp_clock_event = value
-    #slider.valueChanged.connect(slider_value_changed)
-
-    #layout.addWidget(slider)
-    #layout.addWidget(line_edit)
-
-    #window.setLayout(layout)
+    #    clock_event_amp = value
+    #slider_clock_event_amp.valueChanged.connect(slider_value_changed)
+    #layout_left.addWidget(slider_clock_event_amp)
+#
+    #line_edit = QLineEdit()
+    #layout_left.addWidget(line_edit)
+#
+    #window.setLayout(main_layout)
     #window.show()
+
+    fig = plt.figure()
+    ax = plt.axes(xlim=(-2, 4), ylim=(-2, 4))
+    scat = ax.scatter(1, 1, s=10, c='r')
+
+
+    def animate(i):
+        scat.set_sizes([10 + i * 1000])
+        return scat,
+
 
     def init(buff_list):
         if not buff_list:
@@ -435,7 +449,7 @@ if __name__ == '__main__':
         global revtime, mix, predelay, amp, tau4_amp, tau4_rate
         global paddur_min, paddur_max, mamp
         global mdur_min, mdur_max, mfreq, mdetune, mrq_min, mrq_max, mcf, matk, msus, mrel, mpan_min, mpan_max
-        global takt_rate, freq, pasamp, passcf, volume_scale, detune_factor, bufnum, takt
+        global takt_rate, freq, pasamp, passcf, volume_scale, detune_factor, bufnum, takt, anim
 
         delta_val = self.delta[-1] * delta_scale
         volume_val = self.volume[-1]
@@ -478,6 +492,7 @@ if __name__ == '__main__':
         msus = np.clip(msus, 0.5, 1)
         mrel = scn.linlin(volume_val, 0, volume_max, 5, 3)
         mrel = np.clip(mrel, 3, 5)
+
         if delta_val == 0:
             mamp = 0
         else:
@@ -514,7 +529,7 @@ if __name__ == '__main__':
         else:
             v4[0] = ((self.volume[-1] - self.volume[-(tau[3] + 1)]) / tau[3]) * factor_v1
 
-        if self.delta[-1] <= thrs_delta_tau4:
+        if self.delta[-1] < thrs_delta_tau4:
             tau4_amp = 0
             sc.msg("/n_set", [node_base_cont, "rate", 1, "amp", tau4_amp])
         else:
@@ -530,6 +545,10 @@ if __name__ == '__main__':
             clock_event(kalimba_dry, self.volume[-1], clock_event_rate, clock_event_amp)
             #sc.cmd("""e[\oneshot].value;""")
         takt[1] = takt[0]
+
+        anim = FuncAnimation(fig, animate, frames=30, interval=30, repeat=False)
+        plt.pause(1)
+        print("another loop iteration")
 
         os.write(1, f'\r{self.idx}, delta: {float(delta_val):4.2},  volume: {float(volume_val):4.2},  '
                     f'v4: {float(v4[0]):4.2},     '.encode())
@@ -549,7 +568,7 @@ if __name__ == '__main__':
         sc.msg("/n_free", node_base_event)
 
     start_algomus()
-
+    #sys.exit(app.exec_())
 
 
 
@@ -640,7 +659,5 @@ if __name__ == '__main__':
         init(bufnums)
         bloodplayer.set_callback(sonification_nature)
         bloodplayer.create_thread()
-
-    #sys.exit(app.exec_())
 
 

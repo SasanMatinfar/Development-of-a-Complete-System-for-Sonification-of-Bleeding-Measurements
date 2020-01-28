@@ -12,7 +12,12 @@ from PyQt5.QtGui import QIcon
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+from matplotlib import pyplot as plt
+from matplotlib.animation import FuncAnimation
+from time import sleep
+import matlab.engine
 
+#
 class Bloodplayer:
 
     def __init__(self, pulse_time=1, verbose=True):
@@ -32,7 +37,7 @@ class Bloodplayer:
                              'channel_7', 'channel_8', 'channel_9', 'channel_10', 'channel_11', 'channel_12',
                              'channel_13', 'channel_14', 'channel_15', 'channel_16', 'channel_17', 'channel_18',
                              'target']
-        self.max_grams = 0
+        self.grams_prev = 0
         self.output_volume = 0
         self.d_volume_old = 0
         self.dd_volume = 0
@@ -51,6 +56,10 @@ class Bloodplayer:
         self.ts = [None]
         self.ys = [None]
 
+        self.eng = matlab.engine.start_matlab()
+        self.start = 150.0
+        self.i = 0
+
     def callback_fn_default(self, v):
         os.write(1, f"\r                       \r{v}".encode())
 
@@ -62,20 +71,21 @@ class Bloodplayer:
         return d_volume * self.correction_factor_current, self.correction_factor_current, measurements_np
 
     def procfn(self):
-        self.idx = 1
+        self.idx += 1
         while not self.stopevent.wait(0):
             try:
                 time_now = time.time()
 
                 # read the weight from Hx711
-                training_model.sobj_scale.flushInput()
-                grams = training_model.sobj_scale.readline()
-                grams = float(grams.decode("utf-8"))
+                #training_model.sobj_scale.flushInput()
+                #grams = training_model.sobj_scale.readline()
+                #grams = float(grams.decode("utf-8"))
+                grams = 1
 
-                if grams > self.max_grams:
-                    self.d_grams = grams - self.max_grams
-                    self.max_grams = grams
-                else:
+                self.d_grams = grams - self.grams_prev
+                self.grams_prev = grams
+
+                if self.d_grams < 0:
                     self.d_grams = 0
 
                 # apply correction factor from spectrometer to only get the blood amount and convert to volume
@@ -90,10 +100,6 @@ class Bloodplayer:
 
                 # trend of volume change
                 self.dd_volume = self.d_volume_blood_sum - self.d_volume_old
-
-                #print('idx: ' + str(self.xs))
-                #print('delta: ' + str(self.delta))
-                #print('volume: ' + str(self.volume))
 
                 # print with ~1 Hz
                 if (time_now - self.time_old) >= 1:
@@ -126,6 +132,21 @@ class Bloodplayer:
                     self.idx += self.pulse_time#
                     #time.sleep(self.pulse_time)
                     #plt.pause(self.pulse_time)
+
+                    self.i += 1
+                    print("loop iteration: " + str(self.i))
+                    if self.i % 2 == 1:
+                        stop = self.start + 500.0
+                        self.eng.plot_anim(self.start , stop)
+                        print("start: " + str(self.start ))
+                        self.start = self.start + 500.0
+                        print("stop: " + str(self.start ))
+                    else:
+                        stop = self.start  - 500.0
+                        self.eng.plot_anim(self.start , stop)
+                        print("start: " + str(self.start ))
+                        self.start = self.start - 500.0
+                        print("stop: " + str(self.start ))
             except Exception as e:
                 print(str(e))
                 print('Could not read sensor output')

@@ -5,17 +5,19 @@ import sys
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.contrib.keras import layers
-
+#
 
 try:
-    if platform.system() == 'Windows':
-        # sobj_spectro = serial.Serial('COM6', 115200)
-        sobj_scale = serial.Serial('COM12', 9600)
+    #if platform.system() == 'Windows':
+    #    # sobj_spectro = serial.Serial('COM6', 115200)
+    #    sobj_scale = serial.Serial('COM12', 9600)
 
-    elif platform.system() == 'Darwin':
-        # Mac serial call goes here - add your COM Port
-        # sobj_spectro = serial.Serial('/dev/tty.usbmodem14301', 115200)
-        sobj_scale = serial.Serial('/dev/tty.usbserial-14310', 9600)
+    #elif platform.system() == 'Darwin':
+    #    # Mac serial call goes here - add your COM Port
+    #    # sobj_spectro = serial.Serial('/dev/tty.usbmodem14301', 115200)
+    #    sobj_scale = serial.Serial('/dev/tty.usbserial-14310', 9600)
+    print('go on')
+
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
     print('Please connect both sensors', file=sys.stderr)
