@@ -1,29 +1,13 @@
-import pandas as pd
-import platform
-import serial
-import sys
+"""Utility functions for fully connected neural network"""
+
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.contrib.keras import layers
-#
+import pandas as pd
 
-try:
-    if platform.system() == 'Windows':
-        #sobj_spectro = serial.Serial('COM6', 115200)
-        sobj_scale = serial.Serial('COM12', 9600)
+# PARAMETERS
+units = 64
 
-    elif platform.system() == 'Darwin':
-        # Mac serial call goes here - add your COM Port
-        #sobj_spectro = serial.Serial('/dev/tty.usbmodem14301', 115200)
-        sobj_scale = serial.Serial('/dev/tty.usbserial-14110', 9600)
-    print('go on')
-
-except Exception as e:
-    print('Exception Thrown: ' + str(e), file=sys.stderr)
-    print('Please connect both sensors', file=sys.stderr)
-    exit()
-
-units = 18
 # load the training statistics from the last training from log file
 train_stats = pd.read_csv('nn_util/train_stats.csv')
 
@@ -44,7 +28,6 @@ def build_model(num_keys):
                         optimizer=optimizer,
                         metrics=['mean_absolute_error', 'mean_squared_error'])
     return keras_model
-
 
 # normalize data
 def norm(x):

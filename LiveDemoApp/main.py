@@ -44,10 +44,10 @@ buffers = [
     sc.Buffer().load_file("samples-normalized/water-shake.wav"),
     sc.Buffer().load_file("samples-normalized/rain.wav"),
     sc.Buffer().load_file("samples-normalized/thunder.wav"),
-    sc.Buffer().load_file("samples-normalized/seagulls_tuned.wav"),
+    sc.Buffer().load_file("samples-normalized/seagulls.wav"),
     sc.Buffer().load_file("samples-normalized/bell.wav"),
     sc.Buffer().load_file("samples-normalized/bell2.wav"),
-    sc.Buffer().load_file("samples-normalized/Kalimba_Dry_fadeIO.wav"),
+    sc.Buffer().load_file("samples-normalized/Kalimba_Dry.wav"),
 ]
 
 water = buffers[0].bufnum
