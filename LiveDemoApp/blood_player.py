@@ -77,10 +77,9 @@ class Bloodplayer:
                 time_now = time.time()
 
                 # read the weight from Hx711
-                #training_model.sobj_scale.flushInput()
-                #grams = training_model.sobj_scale.readline()
-                #grams = float(grams.decode("utf-8"))
-                grams = 1
+                training_model.sobj_scale.flushInput()
+                grams = training_model.sobj_scale.readline()
+                grams = float(grams.decode("utf-8"))
 
                 self.d_grams = grams - self.grams_prev
                 self.grams_prev = grams
