@@ -17,7 +17,7 @@ from matplotlib.animation import FuncAnimation
 from time import sleep
 import matlab.engine
 
-#
+
 class Bloodplayer:
 
     def __init__(self, pulse_time=1, verbose=True):
