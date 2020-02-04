@@ -4,6 +4,8 @@ import numpy as np
 import sc3nb as scn
 import logging
 import sys
+import pandas as pd
+
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -345,6 +347,12 @@ e.add(\stop -> {
 
 
 if __name__ == '__main__':
+    df = pd.read_csv('log_refactored_correction_factor.csv', na_values=['no info', '.'], delimiter=',')
+    df_indexed = df.reset_index(drop=False)
+    index = df_indexed['index']
+    delta = df_indexed['Delta']
+    volume = df_indexed['Blood Accumulated']
+
     bloodplayer = Bloodplayer()
     factor_v0 = 1
     factor_v1 = 1
@@ -569,9 +577,6 @@ if __name__ == '__main__':
 
     start_algomus()
     #sys.exit(app.exec_())
-
-
-
 
     def event_off(buf_node):
         sc.msg("/n_set", [buf_node, "rate", 0.4, "amp", 0.2, "lgrt", 1, "lgamp", 1])

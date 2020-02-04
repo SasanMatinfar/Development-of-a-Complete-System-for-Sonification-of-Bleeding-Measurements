@@ -836,3 +836,8 @@ Call initializer instance with the dtype argument instead of passing it to the c
 2020-01-31 10:04:28,812 - root - DEBUG - index: 32, delta: 0.0, volume: 2.7358490566037745
 2020-01-31 10:04:30,456 - root - DEBUG - index: 33, delta: 0.0, volume: 2.7358490566037745
 2020-01-31 10:04:32,099 - root - DEBUG - index: 34, delta: 0.28301886792452835, volume: 3.018867924528303
+2020-02-04 15:15:11,303 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
+2020-02-04 15:15:11,304 - root - DEBUG - msg.params [57120]
+2020-02-04 15:15:14,766 - tensorflow - WARNING - From /Users/sasan/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
