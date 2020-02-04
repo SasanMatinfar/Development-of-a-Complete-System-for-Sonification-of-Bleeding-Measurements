@@ -21,7 +21,12 @@ try:
 except Exception as e:
     print('Exception Thrown: ' + str(e), file=sys.stderr)
     print('Please connect both sensors', file=sys.stderr)
-    exit()
+    df = pd.read_csv('logs/log_refactored_correction_factor.csv', na_values=['no info', '.'], delimiter=',')
+    df_indexed = df.reset_index(drop=False)
+    index = df_indexed['index']
+    delta = df_indexed['Delta']
+    volume = df_indexed['Blood Accumulated']
+
 
 units = 18
 # load the training statistics from the last training from log file
