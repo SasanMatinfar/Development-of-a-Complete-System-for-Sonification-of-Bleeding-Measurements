@@ -550,7 +550,7 @@ if __name__ == '__main__':
         plt.pause(1)
         print("another loop iteration")
 
-        os.write(1, f'\r{self.idx}, delta: {float(delta_val):4.2},  volume: {float(volume_val):4.2},  '
+        os.write(1, f'\r{self.idx}, delta: {float(delta_val):6.4},  volume: {float(volume_val):6.4},  '
                     f'v4: {float(v4[0]):4.2},     '.encode())
 
     def start_algomus():
