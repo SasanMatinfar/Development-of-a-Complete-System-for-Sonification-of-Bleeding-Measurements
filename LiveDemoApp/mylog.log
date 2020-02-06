@@ -3429,3 +3429,11 @@ Call initializer instance with the dtype argument instead of passing it to the c
 2020-02-06 16:51:50,625 - root - DEBUG - msg.params [57120]
 2020-02-06 16:54:04,907 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
 2020-02-06 16:54:04,908 - root - DEBUG - msg.params [57120]
+2020-02-06 17:05:47,444 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
+2020-02-06 17:05:47,444 - root - DEBUG - msg.params [57120]
+2020-02-06 17:06:46,181 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
+2020-02-06 17:06:46,181 - root - DEBUG - msg.params [57120]
+2020-02-06 17:07:17,908 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
+2020-02-06 17:07:17,908 - root - DEBUG - msg.params [57120]
+2020-02-06 17:07:50,720 - root - DEBUG - dgram received b'/return\x00,i\x00\x00\x00\x00\xdf '
+2020-02-06 17:07:50,720 - root - DEBUG - msg.params [57120]

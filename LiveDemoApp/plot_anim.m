@@ -1,7 +1,7 @@
 function result = plot_anim(start, stop, volume, vol_max)
     set(gcf, 'Position',  [100, 100, 1000, 400])
     h(1) = subplot(1, 2, 1);
-    set((h1) [10, 10, 20, 40])
+    set(h(1), 'position', [100, 100, 200, 400]);
     x1=0;
     x2=0.75;
     y1=0;
