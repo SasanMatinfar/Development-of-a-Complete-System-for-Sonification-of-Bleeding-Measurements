@@ -26,7 +26,6 @@ from matplotlib import pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-
 logger = logging.getLogger()
 fhandler = logging.FileHandler(filename='mylog.log', mode='a')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -348,15 +347,15 @@ e.add(\stop -> {
 
 if __name__ == '__main__':
     df = pd.read_csv('log_refactored_correction_factor.csv', na_values=['no info', '.'], delimiter=',')
+    #df = pd.read_csv('fake_data.csv', na_values=['no info', '.'], delimiter=',')
+
     df_indexed = df.reset_index(drop=False)
     index = df_indexed['index']
     delta = df_indexed['Delta']
     volume = df_indexed['Blood Accumulated']
 
-    bloodplayer = Bloodplayer()
-    factor_v0 = 1
-    factor_v1 = 1
-    factor_v2 = 1
+    bloodplayer = Bloodplayer(delta)
+
     v0 = [0, 0]
     v1 = [0, 0]
     v2 = [0, 0]
@@ -369,14 +368,10 @@ if __name__ == '__main__':
     node_base_event = 5010
     node_base_clock = 5050
 
-    ##############################################    GUI PARAMETERS    #############################################
-
-    bloodplayer.volume_accumulated = 0
-    volume_max = 1000
+    volume_max = max(volume)
     volume_threshold = 0  # ml threshold for volume
 
-    delta_scale = 1
-    delta_max = 20
+    delta_max = max(delta)
 
     marimba_amp_range = [0.5, 1.5]
 
@@ -388,46 +383,8 @@ if __name__ == '__main__':
 
     clock_event_amp = 0.05
     clock_event_rate = 1.5
-    #thrs_tau4_glocke = 2
-
     tau = [5, 20, 40, 5]
     takt_rate = 200  # one beat per each takt_rate ml
-
-    #################################################################################################################
-    # TODO make GUI for all required parameter and save them in .npy file to recreate the parameter settings:
-    # TODO https://towardsdatascience.com/what-is-npy-files-and-why-you-should-use-them-603373c78883
-    # TODO make executable file
-    # TODO set minus values of volume to zero
-    # TODO test with while instead of threading
-    # TODO make clean up!!! in code and Gitlab repo. etc.
-    # GUI Qt5
-    #app = QApplication([])
-    #window = QWidget()
-    #main_layout = QHBoxLayout()
-    #layout_left = QVBoxLayout()
-    #layout_right = QVBoxLayout()
-    #main_layout.addLayout(layout_left)
-    #main_layout.addLayout(layout_right)
-#
-    #slider_clock_event_amp = QSlider(Qt.Horizontal)
-    #slider_clock_event_amp.setFocusPolicy(Qt.StrongFocus)
-    #slider_clock_event_amp.setTickPosition(QSlider.TicksAbove)
-    #slider_clock_event_amp.setTickInterval(10)
-    #slider_clock_event_amp.setSingleStep(1)
-#
-    #def slider_value_changed():
-    #    global clock_event_amp
-    #    value = slider_clock_event_amp.value() / 100
-    #    line_edit.setText(str(value))
-    #    clock_event_amp = value
-    #slider_clock_event_amp.valueChanged.connect(slider_value_changed)
-    #layout_left.addWidget(slider_clock_event_amp)
-#
-    #line_edit = QLineEdit()
-    #layout_left.addWidget(line_edit)
-#
-    #window.setLayout(main_layout)
-    #window.show()
 
     fig = plt.figure()
     ax = plt.axes(xlim=(-2, 4), ylim=(-2, 4))
@@ -448,10 +405,7 @@ if __name__ == '__main__':
                 print('buffer initiated')
 
     def clock_event(buff, v, r, amp_clock):
-        if v < volume_threshold:
-            pass
-        elif v >= volume_threshold:
-            sc.msg("/s_new", ["pb-simple", node_base_clock, 1, 1, "bufnum", buff, "rate", r, "amp", amp_clock, "loop", 0])
+        sc.msg("/s_new", ["pb-simple", node_base_clock, 1, 1, "bufnum", buff, "rate", r, "amp", amp_clock, "loop", 0])
 
     def sonification_algomusic_one(self):
         global revtime, mix, predelay, amp, tau4_amp, tau4_rate
@@ -459,8 +413,8 @@ if __name__ == '__main__':
         global mdur_min, mdur_max, mfreq, mdetune, mrq_min, mrq_max, mcf, matk, msus, mrel, mpan_min, mpan_max
         global takt_rate, freq, pasamp, passcf, volume_scale, detune_factor, bufnum, takt, anim
 
-        delta_val = self.delta[-1] * delta_scale
-        volume_val = self.volume[-1]
+        delta_val = delta[self.idx]
+        volume_val = volume[self.idx]
 
         revtime = scn.linlin(volume_val, 0, volume_max, 1.8, 0.8)
         revtime = np.clip(revtime, 0.8, 1.8)
@@ -532,12 +486,10 @@ if __name__ == '__main__':
         sc.cmd("""~mpan_max = ^mpan_max""")
 
         # tau 4 = 10 seconds *** seagulls ***
-        if len(self.volume) <= tau[3]:
-            v4[0] = ((self.volume[-1] - self.volume[0]) / tau[3]) * factor_v1
-        else:
-            v4[0] = ((self.volume[-1] - self.volume[-(tau[3] + 1)]) / tau[3]) * factor_v1
+        refidx = max(self.idx - tau[3], 0)
+        v4[0] = (volume.values[self.idx] - volume.values[refidx]) / tau[3]
 
-        if self.delta[-1] < thrs_delta_tau4:
+        if delta[self.idx] < thrs_delta_tau4:
             tau4_amp = 0
             sc.msg("/n_set", [node_base_cont, "rate", 1, "amp", tau4_amp])
         else:
@@ -548,15 +500,17 @@ if __name__ == '__main__':
             sc.msg("/n_set", [node_base_cont, "rate", tau4_rate, "amp", tau4_amp])
 
         # clock-event for every 50 ml blood loss
-        takt[0] = int(self.volume[-1] / takt_rate)
+        takt[0] = int(volume[self.idx] / takt_rate)
         if takt[0] > 0 and takt[0] != takt[1]:
-            clock_event(kalimba_dry, self.volume[-1], clock_event_rate, clock_event_amp)
-            #sc.cmd("""e[\oneshot].value;""")
+            clock_event(kalimba_dry, volume[self.idx], clock_event_rate, clock_event_amp)
         takt[1] = takt[0]
 
-        anim = FuncAnimation(fig, animate, frames=30, interval=30, repeat=False)
-        plt.pause(1)
-        print("another loop iteration")
+        absorb_factor = 50.0
+        self.stop = self.start + float(delta[self.idx]*100.0) - absorb_factor
+        if self.stop < 50.0:
+            self.stop = 50.0
+        self.eng.plot_anim(self.start, self.stop, float(volume[self.idx]), volume_max)
+        self.start = self.stop
 
         os.write(1, f'\r{self.idx}, delta: {float(delta_val):6.4},  volume: {float(volume_val):6.4},  '
                     f'v4: {float(v4[0]):4.2},     '.encode())
@@ -576,7 +530,6 @@ if __name__ == '__main__':
         sc.msg("/n_free", node_base_event)
 
     start_algomus()
-    #sys.exit(app.exec_())
 
     def event_off(buf_node):
         sc.msg("/n_set", [buf_node, "rate", 0.4, "amp", 0.2, "lgrt", 1, "lgamp", 1])
@@ -586,13 +539,13 @@ if __name__ == '__main__':
     def tau_zero(self):
         # *** water *** tau 0 = 5 seconds
         if len(self.volume) <= tau[0]:
-            v0[0] = ((self.volume[-1] - self.volume[0]) / tau[0]) * factor_v0
+            v0[0] = ((self.volume[-1] - self.volume[0]) / tau[0])
         else:
-            v0[0] = ((self.volume[-1] - self.volume[-(tau[0] + 1)]) / tau[0]) * factor_v0
+            v0[0] = ((self.volume[-1] - self.volume[-(tau[0] + 1)]) / tau[0])
         amp[0] = scn.linlin(v0[0], 0, 1.5, 0.1, 0.5)
         amp[0] = np.clip(amp[0], 0.1, 0.5)
         sc.msg("/n_set", [node_base_cont, "rate", 1, "amp", amp[0], "lgrt", 3, "lgamp", 1])
-        if v0[0] >= 1.5 * factor_v0:
+        if v0[0] >= 1.5:
             amp[0] = scn.linlin(v0[0], 1.5, 4, 0.5, 1)
             amp[0] = np.clip(amp[0], 0.5, 1)
             rate[0] = scn.linlin(v0[0], 1.5, 4, 1.5, 4)
@@ -602,11 +555,11 @@ if __name__ == '__main__':
         # Event *** thunder ***
         if self.volume[-1] >= volume_threshold:
 
-            if v0[1] < 4 * factor_v0 < v0[0]:
+            if v0[1] < 4 < v0[0]:
                 sc.msg("/s_new",
                        ["pb-simple", node_base_event, 1, 1, "bufnum", thunder, "rate", 0.9, "amp", 0.6, "loop", 1,
                         "lgrt", 2, "lgamp", 2, "cf", 500])
-            if v0[0] < 4 * factor_v0 < v0[1]:
+            if v0[0] < 4 < v0[1]:
                 event_off(node_base_event)
             v0[1] = v0[0]
 
@@ -619,14 +572,14 @@ if __name__ == '__main__':
         amp_volume = np.clip(amp_volume, 0, 1)
 
         if len(self.volume) <= tau[1]:
-            v1[0] = ((self.volume[-1] - self.volume[0]) / tau[1]) * factor_v1
+            v1[0] = ((self.volume[-1] - self.volume[0]) / tau[1])
         else:
-            v1[0] = ((self.volume[-1] - self.volume[-(tau[1] + 1)]) / tau[1]) * factor_v1
+            v1[0] = ((self.volume[-1] - self.volume[-(tau[1] + 1)]) / tau[1])
 
-        if v1[0] < 0.5 * factor_v1:
+        if v1[0] < 0.5:
             amp[1] = (v1[0] / 2) * amp_volume
             sc.msg("/n_set", [node_base_cont + 1, "rate", 1, "amp", amp[1]])
-        if v1[0] >= 0.5 * factor_v1:
+        if v1[0] >= 0.5:
             amp[1] = scn.linlin(v1[0], 0.5, 2, 0.25, 1)
             amp[1] = np.clip(amp[1], 0.25, 1) * amp_volume
             rate[1] = scn.linlin(v1[0], 0.5, 2, 1, 1.75)
@@ -635,14 +588,14 @@ if __name__ == '__main__':
 
         # tau 2 = 2 minutes *** rain ***
         if len(self.volume) <= tau[2]:
-            v2[0] = ((self.volume[-1] - self.volume[0]) / tau[2]) * factor_v2
+            v2[0] = ((self.volume[-1] - self.volume[0]) / tau[2])
         else:
-            v2[0] = ((self.volume[-1] - self.volume[-(tau[2] + 1)]) / tau[2]) * factor_v2
+            v2[0] = ((self.volume[-1] - self.volume[-(tau[2] + 1)]) / tau[2])
 
-        if v2[0] < 0.75 * factor_v2:
+        if v2[0] < 0.75:
             sc.msg("/n_set", [node_base_cont + 2, "rate", 0.6, "amp", 0.05])
 
-        elif v2[0] >= 0.75 * factor_v2:
+        elif v2[0] >= 0.75:
             amp[2] = scn.linlin(v2[0], 0.75, 1, 0.05, 0.5)
             amp[2] = np.clip(amp[2], 0.05, 0.5) * amp_volume
             rate[2] = scn.linlin(v2[0], 0.75, 1, 0.6, 1.2)
@@ -664,5 +617,3 @@ if __name__ == '__main__':
         init(bufnums)
         bloodplayer.set_callback(sonification_nature)
         bloodplayer.create_thread()
-
-

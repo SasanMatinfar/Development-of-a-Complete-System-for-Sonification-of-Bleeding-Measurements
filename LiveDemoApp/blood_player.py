@@ -1,25 +1,12 @@
 import threading
 import os
 import time
-import logging
-import matplotlib.pyplot as plt
-import random
-
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-
-from matplotlib import pyplot as plt
-from matplotlib.animation import FuncAnimation
-from time import sleep
 import matlab.engine
 
 
 class Bloodplayer:
 
-    def __init__(self, data, verbose=True):
+    def __init__(self, data, verbose=False):
         self.volume_accumulated = 0
         self.lock = threading.RLock()
         self.stopevent = threading.Event()
@@ -37,47 +24,25 @@ class Bloodplayer:
         self.ys = [None]
 
         self.eng = matlab.engine.start_matlab()
-        self.start = 150.0
-        self.i = 0
+        self.start = 50.0
+        self.stop = 50.0
+        self.eng.plot_square()
 
     def callback_fn_default(self, v):
         os.write(1, f"\r                       \r{v}".encode())
 
     def procfn(self):
-        self.idx += 1
-        while not self.stopevent.wait(0):
-            try:
-                self.idx = 0
-                while not self.stopevent.wait(0) and self.idx < self.length - 1:
-                    v = self.data[self.idx]
-                    if self.verbose:
-                        os.write(1, f"\r{self.idx}:{self.idx}                   ".encode())
-                    if callable(self.callback_fn):
-                        self.callback_fn(self)
-                    else:
-                        self.callback_fn_default(v)
-                    self.idx += self.idx
-                    time.sleep(1)
-                print("done.")
-                time_now = time.time()
-                self.i += 1
-                print("loop iteration: " + str(self.i))
-                if self.i % 2 == 1:
-                    stop = self.start + 500.0
-                    self.eng.plot_anim(self.start, stop)
-                    print("start: " + str(self.start ))
-                    self.start = self.start + 500.0
-                    print("stop: " + str(self.start ))
-                else:
-                    stop = self.start - 500.0
-                    self.eng.plot_anim(self.start , stop)
-                    print("start: " + str(self.start ))
-                    self.start = self.start - 500.0
-                    print("stop: " + str(self.start ))
-            except Exception as e:
-                print(str(e))
-                print('Could not read sensor output')
-                time.sleep(0.5)
+        self.idx = 0
+        while not self.stopevent.wait(0) and self.idx < self.length - 1:
+            v = self.data[self.idx]
+            if self.verbose:
+                os.write(1, f"\r{self.idx}:{self.idx}                   ".encode())
+            if callable(self.callback_fn):
+                self.callback_fn(self)
+            else:
+                self.callback_fn_default(v)
+            self.idx += 1
+            time.sleep(1)
         print("done.")
 
     def set_callback(self, fn):
