@@ -1,0 +1,59 @@
+% This file was created by tikzplotlib v0.8.2.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=5cm,
+legend cell align={left},
+legend style={draw=white!80.0!black},
+tick align=outside,
+tick pos=both,
+title={Sonification for Process Monitoring in Highly Sensitive Situations},
+width=9cm,
+x grid style={white!69.01960784313725!black},
+xlabel={time in seconds},
+xmin=-0.1, xmax=881,
+xtick style={color=black},
+y grid style={white!69.01960784313725!black},
+ylabel={signal value},
+ymin=-0.1, ymax=9.5856,
+ytick style={color=black}
+]
+\addplot [red, forget plot]
+table {%
+11 -10
+11 10
+};
+\addplot [red, forget plot]
+table {%
+0 0.984533708596897
+1 0.954079538130222
+2 0.924567393813302
+3 0.895968136344253
+4 0.868253527775062
+5 0.841396203630378
+6 0.815369645888754
+7 0.790148156799632
+8 0.765706833510256
+9 0.744939723339359
+10 0.72481499352347
+11 0.702394593717125
+};
+\addplot [very thin, green!50.0!black, forget plot]
+table {%
+0 0
+0 0
+1 0
+2 0
+3 0
+4 0
+5 0
+6 0
+7 0
+8 0
+9 0.18868
+10 0
+11 0
+};
+\end{axis}
+
+\end{tikzpicture}
